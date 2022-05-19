@@ -1,12 +1,14 @@
 import React from "react";
-import { Sidebar } from "../../components";
+import { ChipSection } from "../../components";
 
 export const Home = () => {
   return (
     <>
-      <div className="grid-page-layout">
-        <Sidebar />
-      </div>
+      <main className="main-container">
+        <div className="m-3 container-flex">
+          <ChipSection />
+        </div>
+      </main>
     </>
   );
 };

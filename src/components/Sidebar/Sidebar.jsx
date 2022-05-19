@@ -50,7 +50,7 @@ export const Sidebar = () => {
   return (
     <>
       <aside className="aside-container aside-height">
-        <ul>
+        <ul className="avoid-text-highlight">
           {sidebarMenu.map((sidebar) => {
             const { id, icon, name } = sidebar;
             return (

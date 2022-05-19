@@ -20,7 +20,7 @@ export const Navbar = () => {
           </Link>
         </div>
 
-        <ul className="right-nav container-flex-align-center">
+        <ul className="right-nav avoid-text-highlight container-flex-align-center">
           <li
             onClick={() =>
               setTheme((prev) => (prev === "light" ? "dark" : "light"))
