@@ -1,1 +1,48 @@
 @import url("https://colorant-ui.netlify.app/CSS/main.css");
+:root {
+  --primary-color: #ef6236;
+}
+
+.dark-mode {
+  --text-color: #fff;
+  --theme-color: #333333;
+  --shadow-color: #1e1e1e;
+  --sidebar-shadow: #000;
+  background-color: var(--theme-color);
+  color: var(--text-color);
+}
+
+.light-mode {
+  --text-color: #333333;
+  --theme-color: #fff;
+  --shadow-color: #f2f2f2;
+  --sidebar-shadow: #ccc;
+  background-color: var(--theme-color);
+  color: var(--text-color);
+}
+
+.text-color {
+  color: var(--text-color);
+}
+
+.shadow {
+  box-shadow: 0px 0px 10px var(--shadow-color);
+}
+
+/* Buttons */
+.btn {
+  border-radius: 20px;
+}
+
+.primary-solid-btn:hover {
+  background-color: #e26139;
+}
+
+/* Grid Page Layout */
+.grid-page-layout {
+  grid-template-columns: 15% 1fr 1fr 1fr;
+}
+
+.aside-container {
+  box-shadow: 0px 0px 2px var(--sidebar-shadow);
+}

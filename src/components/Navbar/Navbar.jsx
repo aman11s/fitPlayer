@@ -11,7 +11,7 @@ export const Navbar = () => {
         <div className="left-nav">
           <Link className="h3 container-flex-align-center" to="/">
             <img className="logo mr-1" src={logo} alt="logo" />
-            <span className="seconday-text-color">fit</span>
+            <span className="text-color">fit</span>
             <span className="primary-text-color">Player</span>
           </Link>
         </div>

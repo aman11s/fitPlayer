@@ -5,7 +5,7 @@ import { Home } from "./pages";
 
 function App() {
   return (
-    <div className="App">
+    <div className="light-mode">
       <Navbar />
 
       {/* Public Routes */}
