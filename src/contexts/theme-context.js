@@ -1,15 +1,10 @@
-import { createContext } from "react";
-import {
-  useContext,
-  useEffect,
-  useState,
-} from "react/cjs/react.production.min";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext(null);
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") ?? "light-mode"
+    () => localStorage.getItem("theme") ?? "light"
   );
 
   useEffect(() => {
