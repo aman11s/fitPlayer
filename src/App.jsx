@@ -1,11 +1,17 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { Navbar } from "./components";
+import { Home } from "./pages";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-center">
-        fit<span className="primary-text-color">Player</span>
-      </h1>
+      <Navbar />
+
+      {/* Public Routes */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }
