@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { BiMoon, BiSun } from "react-icons/bi";
+import { HiMenu } from "react-icons/hi";
 import logo from "../../logo.png";
 import { useTheme } from "../../contexts";
 import "./Navbar.css";
@@ -12,11 +13,12 @@ export const Navbar = () => {
   return (
     <>
       <nav className="nav-bar shadow">
-        <div className="left-nav">
+        <div className="left-nav container-flex-align-center">
+          <HiMenu className="ham-menu-icon mx-2" />
           <Link to="/" className="h3 container-flex-align-center">
             <img className="logo mr-1" src={logo} alt="logo" />
-            <span className="text-color">fit</span>
-            <span className="primary-text-color">Player</span>
+            <span className="hide text-color">fit</span>
+            <span className="hide primary-text-color">Player</span>
           </Link>
         </div>
 
@@ -25,7 +27,7 @@ export const Navbar = () => {
             onClick={() =>
               setTheme((prev) => (prev === "light" ? "dark" : "light"))
             }
-            className="px-2 pt-1 theme-icon"
+            className="pt-1 theme-icon"
           >
             {theme === "light" ? <BiMoon /> : <BiSun />}
           </li>

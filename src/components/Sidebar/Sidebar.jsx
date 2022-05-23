@@ -49,7 +49,7 @@ const sidebarMenu = [
 export const Sidebar = () => {
   return (
     <>
-      <aside className="aside-container aside-height">
+      <aside className="aside-container aside-height active-sidebar">
         <ul className="avoid-text-highlight">
           {sidebarMenu.map((sidebar) => {
             const { id, icon, name } = sidebar;
@@ -67,6 +67,7 @@ export const Sidebar = () => {
           })}
         </ul>
       </aside>
+      <div className="drop-shadow"></div>
     </>
   );
 };

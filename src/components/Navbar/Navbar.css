@@ -11,3 +11,14 @@
   margin: 0;
   cursor: pointer;
 }
+
+.ham-menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .ham-menu-icon {
+    display: block;
+    font-size: 2rem;
+  }
+}
