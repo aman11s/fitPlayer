@@ -10,17 +10,21 @@
   --sidebar-shadow: #000;
   --chip-active-bg-color: #fff;
   --chip-active-text-color: #000;
+  --card-bg-color: #000;
+
   background-color: var(--theme-color);
   color: var(--text-color);
 }
 
 .light-mode {
   --text-color: #333333;
-  --theme-color: #fff;
-  --shadow-color: #f2f2f2;
+  --theme-color: #f9f9f9;
+  --shadow-color: #ededed;
   --sidebar-shadow: #ccc;
   --chip-active-bg-color: #000;
   --chip-active-text-color: #fff;
+  --card-bg-color: #fff;
+
   background-color: var(--theme-color);
   color: var(--text-color);
 }

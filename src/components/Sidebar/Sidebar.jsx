@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ImHome } from "react-icons/im";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { RiPlayListAddFill } from "react-icons/ri";
@@ -13,36 +14,43 @@ const sidebarMenu = [
     id: 1,
     icon: <ImHome />,
     name: "Home",
+    page: "/",
   },
   {
     id: 2,
     icon: <BsFillCameraVideoFill />,
     name: "Videos",
+    page: "/videos",
   },
   {
     id: 3,
     icon: <RiPlayListAddFill />,
     name: "Playlists",
+    page: "/playlists",
   },
   {
     id: 4,
     icon: <AiFillLike />,
     name: "Likes",
+    page: "/likes",
   },
   {
     id: 5,
     icon: <BsFillClockFill />,
     name: "Watch Later",
+    page: "/watchlater",
   },
   {
     id: 6,
     icon: <FaHistory />,
     name: "History",
+    page: "/history",
   },
   {
     id: 7,
     icon: <FaUserCircle />,
     name: "Login",
+    page: "/login",
   },
 ];
 
@@ -56,17 +64,16 @@ export const Sidebar = ({ showSidebar }) => {
       >
         <ul className="avoid-text-highlight">
           {sidebarMenu.map((sidebar) => {
-            const { id, icon, name } = sidebar;
+            const { id, icon, name, page } = sidebar;
             return (
-              <li
-                key={id}
-                className="sidebar-menu m-4 container-flex-align-center"
-              >
-                <span className="icon mr-1 container-flex-align-center">
-                  {icon}
-                </span>{" "}
-                {name}
-              </li>
+              <Link key={id} to={page}>
+                <li className="sidebar-menu m-4 container-flex-align-center">
+                  <span className="icon mr-1 container-flex-align-center">
+                    {icon}
+                  </span>
+                  <span className="text-color">{name}</span>
+                </li>
+              </Link>
             );
           })}
         </ul>

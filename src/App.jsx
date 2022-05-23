@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import { Navbar, Sidebar } from "./components";
 import { useTheme } from "./contexts";
-import { Home } from "./pages";
+import { Home, Videos } from "./pages";
+import "./App.css";
 
 function App() {
   const { theme } = useTheme();
@@ -18,6 +18,7 @@ function App() {
         {/* Public Routes */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/videos" element={<Videos />} />
         </Routes>
       </div>
     </div>

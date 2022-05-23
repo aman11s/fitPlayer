@@ -2,7 +2,7 @@
   max-width: 35px;
 }
 
-.nav-bar {
+nav.nav-bar {
   background-color: var(--theme-color);
 }
 

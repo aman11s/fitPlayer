@@ -1,0 +1,17 @@
+.video-card {
+  max-width: 20rem;
+  background-color: var(--card-bg-color);
+}
+
+.vcard-footer {
+  border-top: 1px solid var(--shadow-color);
+}
+
+.creator-avatar {
+  border: 2px solid var(--primary-color);
+}
+
+.more-icon {
+  margin-left: auto;
+  font-size: 1.4rem;
+}
