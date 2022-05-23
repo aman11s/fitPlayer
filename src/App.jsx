@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Navbar, Sidebar } from "./components";
@@ -6,12 +7,13 @@ import { Home } from "./pages";
 
 function App() {
   const { theme } = useTheme();
+  const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <div className={`${theme}-mode`}>
-      <Navbar />
+      <Navbar setShowSidebar={setShowSidebar} />
       <div className="grid-page-layout">
-        <Sidebar />
+        <Sidebar showSidebar={showSidebar} />
 
         {/* Public Routes */}
         <Routes>

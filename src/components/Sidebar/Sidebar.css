@@ -14,6 +14,10 @@
     height: 100vh;
   }
 
+  .inactive-sidebar {
+    display: none;
+  }
+
   .drop-shadow {
     position: fixed;
     top: 0;

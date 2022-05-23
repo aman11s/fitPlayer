@@ -46,10 +46,14 @@ const sidebarMenu = [
   },
 ];
 
-export const Sidebar = () => {
+export const Sidebar = ({ showSidebar }) => {
   return (
     <>
-      <aside className="aside-container aside-height active-sidebar">
+      <aside
+        className={`aside-container aside-height ${
+          showSidebar ? "active" : "inactive"
+        }-sidebar`}
+      >
         <ul className="avoid-text-highlight">
           {sidebarMenu.map((sidebar) => {
             const { id, icon, name } = sidebar;
@@ -67,7 +71,7 @@ export const Sidebar = () => {
           })}
         </ul>
       </aside>
-      <div className="drop-shadow"></div>
+      {showSidebar && <div className="drop-shadow"></div>}
     </>
   );
 };
