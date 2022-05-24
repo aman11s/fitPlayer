@@ -1,6 +1,14 @@
 .video-card {
   max-width: 20rem;
   background-color: var(--card-bg-color);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.video-card:hover {
+  -ms-transform: scale(1.1); /* IE */
+  -webkit-transform: scale(1.1); /* Safari */
+  transform: scale(1.1); /* Chrome and others */
 }
 
 .vcard-footer {
