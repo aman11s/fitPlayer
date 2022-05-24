@@ -128,15 +128,15 @@ export const videos = [
   },
   {
     _id: uuid(),
-    title: "Zumba Dance Workout for weight loss",
+    title: "Kamelia - Amor (Zumba Choreography by Claudiu Gutu)",
     categoryName: "zumba",
-    link: "https://www.youtube.com/watch?v=HRkNfdlm5Qs",
-    thumbnail: "https://i3.ytimg.com/vi/HRkNfdlm5Qs/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=OGCX_WU6vRc",
+    thumbnail: "https://i3.ytimg.com/vi/OGCX_WU6vRc/maxresdefault.jpg",
     description:
-      "Have fun while you lose weight with oneHOWTO! Zumba Dance Workout with our best uDance instructor! Keep on doing this dance non stop to lose weight while dancing and having fun.  Zumba is an enjoyable way to stay fit.",
-    creator: "OneHowto",
+      "Have fun while you lose weight! Zumba Dance Workout with our best uDance instructor! Keep on doing this dance non stop to lose weight while dancing and having fun.  Zumba is an enjoyable way to stay fit.",
+    creator: "KAMELIA",
     creatorDp:
-      "https://yt3.ggpht.com/ytc/AKedOLSs_h_xq8-d2a3E01IrFu2mqq_OHzZZVNm7QeP5tg=s48-c-k-c0x00ffffff-no-rj",
+      "https://yt3.ggpht.com/ytc/AKedOLRWqrKoyhwhQDsn1SSRNJS37HBn1WlSS17Q4ww4=s48-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: uuid(),
