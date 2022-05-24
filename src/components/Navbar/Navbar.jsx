@@ -12,7 +12,7 @@ export const Navbar = ({ setShowSidebar }) => {
 
   return (
     <>
-      <nav className="nav-bar shadow">
+      <nav className="nav-bar avoid-text-highlight shadow">
         <div className="left-nav container-flex-align-center">
           <HiMenu
             onClick={() => setShowSidebar((prev) => !prev)}
@@ -25,7 +25,7 @@ export const Navbar = ({ setShowSidebar }) => {
           </Link>
         </div>
 
-        <ul className="right-nav avoid-text-highlight container-flex-align-center">
+        <ul className="right-nav container-flex-align-center">
           <li
             onClick={() =>
               setTheme((prev) => (prev === "light" ? "dark" : "light"))

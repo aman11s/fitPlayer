@@ -20,5 +20,6 @@ nav.nav-bar {
   .ham-menu-icon {
     display: block;
     font-size: 2rem;
+    cursor: pointer;
   }
 }

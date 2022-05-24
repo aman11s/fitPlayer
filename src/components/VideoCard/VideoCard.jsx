@@ -1,24 +1,27 @@
 import React from "react";
 import "./VideoCard.css";
 import { FiMoreVertical } from "react-icons/fi";
+import { shortStr } from "../../utils";
 
-export const VideoCard = ({ thumbnailSrc }) => {
+export const VideoCard = ({ videos }) => {
+  const { creator, creatorDp, thumbnail, title } = videos;
+
   return (
     <>
       <div className="video-card radius-5">
         <div className="vcard-head">
-          <img className="img-responsive" src={thumbnailSrc} alt="thumbnail" />
+          <img className="img-responsive" src={thumbnail} alt="thumbnail" />
         </div>
         <div className="vcard-body p-1">
-          <h6 className="h6">15 Minute Beginner Weight Training...</h6>
+          <h6 className="h6">{shortStr(title)}</h6>
         </div>
         <div className="vcard-footer p-1 container-flex-align-center">
           <img
-            src="https://yt3.ggpht.com/ytc/AKedOLS8yUsoZP_JJAAdCc7AFQXutrv1tcblzl6JCS5yIQ=s48-c-k-c0x00ffffff-no-rj"
+            src={creatorDp}
             alt="avatar"
             className="avatar avatar-xs-size creator-avatar"
           />
-          <span className="small-text ml-2">HASfit</span>
+          <span className="ml-2">{shortStr(creator)}</span>
           <FiMoreVertical className="more-icon mr-1" />
         </div>
       </div>
