@@ -8,3 +8,6 @@ export const shortStr = (str) => {
   }
   return newStr;
 };
+
+export const filterByCategory = (category, video) =>
+  video.filter(({ categoryName }) => categoryName === category.toLowerCase());

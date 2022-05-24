@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ChipSection, VideoCard } from "../../components";
 import { useVideo } from "../../contexts";
-import { constants } from "../../utils";
+import { constants, filterByCategory } from "../../utils";
 import "./Videos.css";
 
 export const Videos = () => {
@@ -10,6 +10,8 @@ export const Videos = () => {
     videoState: { videos },
     videoDispatch,
   } = useVideo();
+
+  const [selectCategory, setSelectCategory] = useState("All");
 
   useEffect(() => {
     (async () => {
@@ -32,14 +34,22 @@ export const Videos = () => {
     })();
   }, [videoDispatch]);
 
+  const filteredVideos =
+    selectCategory === "All"
+      ? videos
+      : filterByCategory(selectCategory, videos);
+
   return (
     <>
       <main className="main-container">
         <div className="m-3 container-flex chip-section">
-          <ChipSection />
+          <ChipSection
+            selectCategory={selectCategory}
+            setSelectCategory={setSelectCategory}
+          />
         </div>
         <div className="grid-minmax-card m-4">
-          {videos.map((videos) => {
+          {filteredVideos.map((videos) => {
             return <VideoCard key={videos._id} videos={videos} />;
           })}
         </div>

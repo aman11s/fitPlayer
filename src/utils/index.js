@@ -1,2 +1,2 @@
 export { constants } from "./constants";
-export { shortStr } from "./utils";
+export { shortStr, filterByCategory } from "./utils";

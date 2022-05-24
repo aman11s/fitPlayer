@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./ChipSection.css";
 
 const chipsList = [
@@ -9,15 +8,14 @@ const chipsList = [
   { id: 5, name: "Zumba" },
 ];
 
-export const ChipSection = ({ name }) => {
-  const [categoryName, setCategoryName] = useState("All");
+export const ChipSection = ({ selectCategory, setSelectCategory }) => {
   return (
     <>
       {chipsList.map(({ id, name }) => {
         return (
           <div
-            onClick={() => setCategoryName(name)}
-            className={`chip mx-2 ${categoryName === name && "chip-active"}`}
+            onClick={() => setSelectCategory(name)}
+            className={`chip mx-2 ${selectCategory === name && "chip-active"}`}
             key={id}
           >
             {name}
