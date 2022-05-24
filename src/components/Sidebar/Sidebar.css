@@ -1,10 +1,23 @@
 .sidebar-menu {
   font-size: 1.1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .icon {
   color: var(--primary-color);
+}
+
+@media screen and (max-width: 1250px) {
+  .sidebar-menu {
+    flex-direction: column;
+  }
+
+  .side-menu-name {
+    text-align: center;
+    padding-top: 0.5rem;
+  }
 }
 
 @media screen and (max-width: 600px) {
