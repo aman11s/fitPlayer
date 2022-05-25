@@ -25,9 +25,3 @@ export const ChipSection = ({ selectCategory, setSelectCategory }) => {
     </>
   );
 };
-
-// {
-//   chipsList.map(({ id, name }) => {
-//     return <ChipSection key={id} name={name} />;
-//   });
-// }
