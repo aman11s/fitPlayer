@@ -1,6 +1,6 @@
 .grid-minmax-card {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 3fr));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 3fr));
   gap: 2rem;
   place-items: center;
 }
@@ -13,10 +13,4 @@
 
 .chip-section::-webkit-scrollbar {
   display: none;
-}
-
-@media screen and (max-width: 800px) {
-  .grid-minmax-card {
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 3fr));
-  }
 }
