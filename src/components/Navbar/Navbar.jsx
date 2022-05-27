@@ -38,8 +38,8 @@ export const Navbar = ({ pathname, setShowSidebar }) => {
           </li>
           <li>
             <Link
-              to="/"
-              className="btn primary-solid-btn container-flex-align-center"
+              to="/login"
+              className="btn btn-radius primary-solid-btn container-flex-align-center"
             >
               <FaUserCircle className="mr-1" />
               Login
