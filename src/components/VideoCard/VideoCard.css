@@ -1,5 +1,5 @@
 .video-card {
-  max-width: 20rem;
+  max-width: 30rem;
   background-color: var(--card-bg-color);
   cursor: pointer;
   transition: transform 0.2s;

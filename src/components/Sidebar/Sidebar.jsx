@@ -54,31 +54,33 @@ const sidebarMenu = [
   },
 ];
 
-export const Sidebar = ({ showSidebar }) => {
-  return (
-    <>
-      <aside
-        className={`aside-container aside-height ${
-          showSidebar ? "active" : "inactive"
-        }-sidebar`}
-      >
-        <ul className="avoid-text-highlight">
-          {sidebarMenu.map((sidebar) => {
-            const { id, icon, name, page } = sidebar;
-            return (
-              <Link key={id} to={page}>
-                <li className="sidebar-menu m-4">
-                  <span className="icon mr-1 container-flex-align-center">
-                    {icon}
-                  </span>
-                  <span className="text-color side-menu-name">{name}</span>
-                </li>
-              </Link>
-            );
-          })}
-        </ul>
-      </aside>
-      {showSidebar && <div className="drop-shadow"></div>}
-    </>
-  );
+export const Sidebar = ({ pathname, showSidebar }) => {
+  if (pathname !== "/") {
+    return (
+      <>
+        <aside
+          className={`aside-container aside-height ${
+            showSidebar ? "active" : "inactive"
+          }-sidebar`}
+        >
+          <ul className="avoid-text-highlight">
+            {sidebarMenu.map((sidebar) => {
+              const { id, icon, name, page } = sidebar;
+              return (
+                <Link key={id} to={page}>
+                  <li className="sidebar-menu m-4">
+                    <span className="icon mr-1 container-flex-align-center">
+                      {icon}
+                    </span>
+                    <span className="text-color side-menu-name">{name}</span>
+                  </li>
+                </Link>
+              );
+            })}
+          </ul>
+        </aside>
+        {showSidebar && <div className="drop-shadow"></div>}
+      </>
+    );
+  }
 };
