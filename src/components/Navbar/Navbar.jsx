@@ -7,17 +7,19 @@ import logo from "../../logo.png";
 import { useTheme } from "../../contexts";
 import "./Navbar.css";
 
-export const Navbar = ({ setShowSidebar }) => {
+export const Navbar = ({ pathname, setShowSidebar }) => {
   const { theme, setTheme } = useTheme();
 
   return (
     <>
       <nav className="nav-bar avoid-text-highlight shadow">
         <div className="left-nav container-flex-align-center">
-          <HiMenu
-            onClick={() => setShowSidebar((prev) => !prev)}
-            className="ham-menu-icon mx-2"
-          />
+          {pathname !== "/" && (
+            <HiMenu
+              onClick={() => setShowSidebar((prev) => !prev)}
+              className="ham-menu-icon mx-2"
+            />
+          )}
           <Link to="/" className="h3 container-flex-align-center">
             <img className="logo mr-1" src={logo} alt="logo" />
             <span className="hide text-color">fit</span>

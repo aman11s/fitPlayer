@@ -1,0 +1,12 @@
+.home-main {
+  height: calc(100vh - 5.2rem);
+}
+
+.hero {
+  flex-direction: column;
+  margin-top: 10rem;
+}
+
+.hero-logo {
+  max-width: 40px;
+}
