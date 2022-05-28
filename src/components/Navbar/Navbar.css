@@ -6,10 +6,9 @@ nav.nav-bar {
   background-color: var(--theme-color);
 }
 
-.theme-icon {
+.nav-icons {
   font-size: 2rem;
   margin: 0;
-  cursor: pointer;
 }
 
 .ham-menu-icon {
@@ -17,13 +16,16 @@ nav.nav-bar {
 }
 
 nav .right-nav {
-  margin-right: 1rem;
+  margin-right: 1.5rem;
+}
+
+.user {
+  position: relative;
 }
 
 @media screen and (max-width: 600px) {
   .ham-menu-icon {
     display: block;
     font-size: 2rem;
-    cursor: pointer;
   }
 }

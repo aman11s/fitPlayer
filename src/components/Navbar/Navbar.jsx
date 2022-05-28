@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import { HiOutlineUser } from "react-icons/hi";
+import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import { BiMoon, BiSun } from "react-icons/bi";
 import { HiMenu } from "react-icons/hi";
 import logo from "../../logo.png";
-import { useTheme } from "../../contexts";
+import { useAuth, useTheme } from "../../contexts";
+import { DropDownList } from "../../components";
 import "./Navbar.css";
 
 export const Navbar = ({ pathname, setShowSidebar }) => {
   const { theme, setTheme } = useTheme();
+  const {
+    userData: { token: isLoggedIn },
+  } = useAuth();
+
+  const [activeDropDown, setActiveDropDown] = useState(false);
 
   return (
     <>
@@ -17,7 +25,7 @@ export const Navbar = ({ pathname, setShowSidebar }) => {
           {pathname !== "/" && (
             <HiMenu
               onClick={() => setShowSidebar((prev) => !prev)}
-              className="ham-menu-icon mx-2"
+              className="ham-menu-icon cursor-pointer mx-2"
             />
           )}
           <Link to="/" className="h3 container-flex-align-center">
@@ -32,18 +40,32 @@ export const Navbar = ({ pathname, setShowSidebar }) => {
             onClick={() =>
               setTheme((prev) => (prev === "light" ? "dark" : "light"))
             }
-            className="pt-1 theme-icon"
+            className="pt-1 nav-icons cursor-pointer"
           >
             {theme === "light" ? <BiMoon /> : <BiSun />}
           </li>
           <li>
-            <Link
-              to="/login"
-              className="btn btn-radius primary-solid-btn container-flex-align-center"
-            >
-              <FaUserCircle className="mr-1" />
-              Login
-            </Link>
+            {isLoggedIn ? (
+              <div className="user cursor-pointer avoid-text-highlight">
+                <div onClick={() => setActiveDropDown(!activeDropDown)}>
+                  {activeDropDown ? (
+                    <AiFillCaretUp className="mb-1" />
+                  ) : (
+                    <AiFillCaretDown className="mb-1" />
+                  )}
+                  <HiOutlineUser className="nav-icons" />
+                </div>
+                {activeDropDown && <DropDownList />}
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="btn btn-radius primary-solid-btn container-flex-align-center"
+              >
+                <FaUserCircle className="mr-1" />
+                Login
+              </Link>
+            )}
           </li>
         </ul>
       </nav>
