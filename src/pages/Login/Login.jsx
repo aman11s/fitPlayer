@@ -6,12 +6,14 @@ const loginFormDetails = [
     id: 1,
     label: "Email Address",
     name: "email",
+    type: "email",
   },
 
   {
     id: 2,
     label: "Password",
     name: "password",
+    type: "password",
   },
 ];
 
@@ -22,12 +24,12 @@ export const Login = () => {
         <form className="auth-form p-4 radius-5 shadow">
           <h4 className="h4 mb-4 text-center">Login</h4>
 
-          {loginFormDetails.map(({ id, label, name }) => {
+          {loginFormDetails.map(({ id, label, name, type }) => {
             return (
               <label key={id}>
                 <div className="mb-1">{label}</div>
                 <input
-                  type={name}
+                  type={type}
                   name={name}
                   placeholder={`Enter your ${name}`}
                   className="px-2 py-1 mb-3 auth-input"
@@ -49,10 +51,7 @@ export const Login = () => {
             Use test credentials
           </button>
 
-          <Link
-            to={"/signup"}
-            className="container-flex-center text-color mt-3"
-          >
+          <Link to="/signup" className="container-flex-center text-color mt-3">
             Create New Account
             <i className="right-arrow-icon bx bx-chevron-right"></i>
           </Link>

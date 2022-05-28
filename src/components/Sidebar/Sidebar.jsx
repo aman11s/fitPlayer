@@ -55,7 +55,7 @@ const sidebarMenu = [
 ];
 
 export const Sidebar = ({ pathname, showSidebar }) => {
-  if (pathname !== "/" && pathname !== "/login") {
+  if (pathname !== "/" && pathname !== "/login" && pathname !== "/signup") {
     return (
       <>
         <aside

@@ -11,7 +11,7 @@ function App() {
   const { pathname } = useLocation();
 
   const notGridPage = () => {
-    return pathname !== "/" && pathname !== "/login";
+    return pathname !== "/" && pathname !== "/login" && pathname !== "/signup";
   };
 
   return (
@@ -25,7 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/videos" element={<Videos />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/singup" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
     </div>
