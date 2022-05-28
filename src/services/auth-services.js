@@ -60,3 +60,22 @@ export const singupHandler = async ({ e, formData, setUserData, navigate }) => {
     }
   }
 };
+
+export const logoutHandler = ({ navigate, setUserData }) => {
+  const logoutPromise = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Logged out successfully!");
+    }, 1200);
+  });
+
+  logoutPromise.then(() => {
+    setUserData({});
+    localStorage.removeItem("userData");
+    navigate("/videos");
+  });
+
+  toast.promise(logoutPromise, {
+    loading: "Logging out",
+    success: (msg) => msg,
+  });
+};

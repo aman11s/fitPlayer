@@ -10,6 +10,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { useAuth } from "../../contexts";
 import "./Sidebar.css";
+import { logoutHandler } from "../../services";
 
 const sidebarMenu = [
   {
@@ -53,6 +54,7 @@ const sidebarMenu = [
 export const Sidebar = ({ pathname, showSidebar }) => {
   const {
     userData: { token },
+    setUserData,
   } = useAuth();
   const navigate = useNavigate();
 
@@ -80,7 +82,10 @@ export const Sidebar = ({ pathname, showSidebar }) => {
             })}
 
             {token ? (
-              <li className="sidebar-menu cursor-pointer m-4">
+              <li
+                onClick={() => logoutHandler({ navigate, setUserData })}
+                className="sidebar-menu cursor-pointer m-4"
+              >
                 <span className="icon mr-1 container-flex-align-center">
                   <FiLogOut />
                 </span>

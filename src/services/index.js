@@ -1,1 +1,1 @@
-export { loginHandler, singupHandler } from "./auth-services";
+export { loginHandler, singupHandler, logoutHandler } from "./auth-services";
