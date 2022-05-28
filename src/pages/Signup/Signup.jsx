@@ -1,5 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { singupHandler } from "../../services";
+import { useAuth } from "../../contexts";
 
 const singupFormDetails = [
   {
@@ -43,11 +45,44 @@ const singupFormDetails = [
   },
 ];
 
+const initialFormData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  termsAndConditions: false,
+};
+
 export const Signup = () => {
+  const [formData, setFormData] = useState(initialFormData);
+
+  const { setUserData } = useAuth();
+  const navigate = useNavigate();
+
+  const changeHandler = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const toggleHandler = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked,
+    }));
+  };
+
   return (
     <>
       <main className="container-flex-center">
-        <form className="auth-form m-4 p-4 radius-5 shadow">
+        <form
+          onSubmit={(e) =>
+            singupHandler({ e, formData, setUserData, navigate })
+          }
+          className="auth-form m-4 p-4 radius-5 shadow"
+        >
           <h4 className="h4 mb-4 text-center">Singup</h4>
 
           {singupFormDetails.map(({ id, label, name, type, placeholder }) => {
@@ -55,9 +90,11 @@ export const Signup = () => {
               <label key={id}>
                 <div className="mb-1">{label}</div>
                 <input
+                  onChange={changeHandler}
                   type={type}
                   name={name}
                   placeholder={`Enter your ${placeholder}`}
+                  value={formData[name]}
                   className="px-2 py-1 mb-2 auth-input"
                   required
                 />
@@ -67,7 +104,13 @@ export const Signup = () => {
 
           <div className="container-flex">
             <label>
-              <input type="checkbox" required />
+              <input
+                onChange={toggleHandler}
+                name="termsAndConditions"
+                type="checkbox"
+                checked={formData.termsAndConditions}
+                required
+              />
               <span className="avoid-text-highlight">
                 {" "}
                 I accept all Terms & Conditions

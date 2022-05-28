@@ -37,3 +37,26 @@ export const loginHandler = async ({
     }
   }
 };
+
+export const singupHandler = async ({ e, formData, setUserData, navigate }) => {
+  e.preventDefault();
+  try {
+    const { data, status } = await axios({
+      method: "POST",
+      url: "/api/auth/signup",
+      data: { ...formData },
+    });
+    if (status === 201) {
+      const userData = { token: data.encodedToken, user: data.createdUser };
+      localStorage.setItem("userData", JSON.stringify(userData));
+      setUserData(userData);
+      toast.success("Successfully Singed up!");
+      navigate("/videos");
+    }
+  } catch (e) {
+    console.error(e);
+    if (e.response.status === 422) {
+      toast.error("Account already exist with this email");
+    }
+  }
+};
