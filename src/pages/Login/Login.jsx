@@ -1,5 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useAuth } from "../../contexts";
+import { loginHandler } from "../../services";
 
 const loginFormDetails = [
   {
@@ -17,11 +20,57 @@ const loginFormDetails = [
   },
 ];
 
+const initialFormData = {
+  email: "",
+  password: "",
+  rememberMe: false,
+};
+
+const testCredentials = {
+  email: "reachout.amansingh@gmail.com",
+  password: "amansingh",
+  rememberMe: true,
+};
+
 export const Login = () => {
+  const [formData, setFormData] = useState(initialFormData);
+  const [btnLoader, setBtnLoader] = useState(false);
+
+  const { email, password } = formData;
+
+  const { setUserData } = useAuth();
+  const navigate = useNavigate();
+
+  const changeHandler = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const toggleHandler = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.checked,
+    }));
+  };
+
   return (
     <>
       <main className="main-min-height container-flex-center">
-        <form className="auth-form p-4 radius-5 shadow">
+        <form
+          onSubmit={(e) =>
+            loginHandler({
+              e,
+              setBtnLoader,
+              email,
+              password,
+              setUserData,
+              navigate,
+            })
+          }
+          className="auth-form p-4 radius-5 shadow"
+        >
           <h4 className="h4 mb-4 text-center">Login</h4>
 
           {loginFormDetails.map(({ id, label, name, type }) => {
@@ -29,9 +78,11 @@ export const Login = () => {
               <label key={id}>
                 <div className="mb-1">{label}</div>
                 <input
+                  onChange={changeHandler}
                   type={type}
                   name={name}
                   placeholder={`Enter your ${name}`}
+                  value={formData[name]}
                   className="px-2 py-1 mb-3 auth-input"
                   required
                 />
@@ -41,13 +92,28 @@ export const Login = () => {
 
           <div className="container-flex">
             <label>
-              <input type="checkbox" />
+              <input
+                onChange={toggleHandler}
+                type="checkbox"
+                name="rememberMe"
+                checked={formData.rememberMe}
+              />
               <span className="avoid-text-highlight"> Remember me</span>
             </label>
           </div>
 
-          <button className="btn mt-2 primary-solid-btn">Login</button>
-          <button type="button" className="btn mt-2 primary-solid-btn">
+          <button className="btn mt-2 primary-solid-btn">
+            {btnLoader ? (
+              <ClipLoader color="#fff" speedMultiplier={2} size={14} />
+            ) : (
+              "Login"
+            )}
+          </button>
+          <button
+            onClick={() => setFormData(testCredentials)}
+            type="button"
+            className="btn mt-2 primary-solid-btn"
+          >
             Use test credentials
           </button>
 
