@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ImHome } from "react-icons/im";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { RiPlayListAddFill } from "react-icons/ri";
@@ -7,6 +7,8 @@ import { AiFillLike } from "react-icons/ai";
 import { FaHistory } from "react-icons/fa";
 import { BsFillClockFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import { useAuth } from "../../contexts";
 import "./Sidebar.css";
 
 const sidebarMenu = [
@@ -46,15 +48,14 @@ const sidebarMenu = [
     name: "History",
     page: "/history",
   },
-  {
-    id: 7,
-    icon: <FaUserCircle />,
-    name: "Login",
-    page: "/login",
-  },
 ];
 
 export const Sidebar = ({ pathname, showSidebar }) => {
+  const {
+    userData: { token },
+  } = useAuth();
+  const navigate = useNavigate();
+
   if (pathname !== "/" && pathname !== "/login" && pathname !== "/signup") {
     return (
       <>
@@ -77,6 +78,25 @@ export const Sidebar = ({ pathname, showSidebar }) => {
                 </Link>
               );
             })}
+
+            {token ? (
+              <li className="sidebar-menu cursor-pointer m-4">
+                <span className="icon mr-1 container-flex-align-center">
+                  <FiLogOut />
+                </span>
+                <span className="text-color side-menu-name">Logout</span>
+              </li>
+            ) : (
+              <li
+                onClick={() => navigate("/login")}
+                className="sidebar-menu cursor-pointer m-4"
+              >
+                <span className="icon mr-1 container-flex-align-center">
+                  <FaUserCircle />
+                </span>
+                <span className="text-color side-menu-name">Login</span>
+              </li>
+            )}
           </ul>
         </aside>
         {showSidebar && <div className="drop-shadow"></div>}
