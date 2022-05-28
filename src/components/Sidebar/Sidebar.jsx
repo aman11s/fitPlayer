@@ -68,7 +68,7 @@ export const Sidebar = ({ pathname, showSidebar }) => {
               const { id, icon, name, page } = sidebar;
               return (
                 <Link key={id} to={page}>
-                  <li className="sidebar-menu m-4">
+                  <li className="sidebar-menu cursor-pointer m-4">
                     <span className="icon mr-1 container-flex-align-center">
                       {icon}
                     </span>

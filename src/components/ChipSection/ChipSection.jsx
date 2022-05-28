@@ -15,7 +15,9 @@ export const ChipSection = ({ selectCategory, setSelectCategory }) => {
         return (
           <div
             onClick={() => setSelectCategory(name)}
-            className={`chip mx-2 ${selectCategory === name && "chip-active"}`}
+            className={`chip cursor-pointer mx-2 ${
+              selectCategory === name && "chip-active"
+            }`}
             key={id}
           >
             {name}
