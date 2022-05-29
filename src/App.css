@@ -94,7 +94,6 @@
 }
 
 /* Font weight utility classes */
-
 .fw-600 {
   font-weight: 600;
 }
@@ -114,4 +113,15 @@
 /* Cursor */
 .cursor-pointer {
   cursor: pointer;
+}
+
+/* Border radius */
+.top-radius-5 {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.bottom-radius-5 {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

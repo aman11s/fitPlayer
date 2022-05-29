@@ -14,9 +14,3 @@ ul.drop-down-list li {
 .drop-down-list li:hover {
   background-color: var(--shadow-color);
 }
-
-.list-btn {
-  border: none;
-  background-color: var(--card-bg-color);
-  color: var(--text-color);
-}
