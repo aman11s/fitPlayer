@@ -3,7 +3,6 @@
   background-color: var(--shadow-color);
   border-radius: 20px;
   border: none;
-  cursor: pointer;
 }
 
 .chip-active {

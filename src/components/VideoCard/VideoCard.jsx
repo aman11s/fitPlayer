@@ -8,7 +8,7 @@ export const VideoCard = ({ videos }) => {
 
   return (
     <>
-      <div className="video-card radius-5">
+      <div className="video-card cursor-pointer radius-5">
         <div className="vcard-head">
           <img className="img-responsive" src={thumbnail} alt="thumbnail" />
         </div>

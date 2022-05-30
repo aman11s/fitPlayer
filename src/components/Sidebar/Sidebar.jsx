@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ImHome } from "react-icons/im";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { RiPlayListAddFill } from "react-icons/ri";
@@ -7,7 +7,10 @@ import { AiFillLike } from "react-icons/ai";
 import { FaHistory } from "react-icons/fa";
 import { BsFillClockFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import { useAuth } from "../../contexts";
 import "./Sidebar.css";
+import { logoutHandler } from "../../services";
 
 const sidebarMenu = [
   {
@@ -46,16 +49,16 @@ const sidebarMenu = [
     name: "History",
     page: "/history",
   },
-  {
-    id: 7,
-    icon: <FaUserCircle />,
-    name: "Login",
-    page: "/login",
-  },
 ];
 
 export const Sidebar = ({ pathname, showSidebar }) => {
-  if (pathname !== "/") {
+  const {
+    userData: { token },
+    setUserData,
+  } = useAuth();
+  const navigate = useNavigate();
+
+  if (pathname !== "/" && pathname !== "/login" && pathname !== "/signup") {
     return (
       <>
         <aside
@@ -68,7 +71,7 @@ export const Sidebar = ({ pathname, showSidebar }) => {
               const { id, icon, name, page } = sidebar;
               return (
                 <Link key={id} to={page}>
-                  <li className="sidebar-menu m-4">
+                  <li className="sidebar-menu cursor-pointer m-4">
                     <span className="icon mr-1 container-flex-align-center">
                       {icon}
                     </span>
@@ -77,6 +80,28 @@ export const Sidebar = ({ pathname, showSidebar }) => {
                 </Link>
               );
             })}
+
+            {token ? (
+              <li
+                onClick={() => logoutHandler({ navigate, setUserData })}
+                className="sidebar-menu cursor-pointer m-4"
+              >
+                <span className="icon mr-1 container-flex-align-center">
+                  <FiLogOut />
+                </span>
+                <span className="text-color side-menu-name">Logout</span>
+              </li>
+            ) : (
+              <li
+                onClick={() => navigate("/login")}
+                className="sidebar-menu cursor-pointer m-4"
+              >
+                <span className="icon mr-1 container-flex-align-center">
+                  <FaUserCircle />
+                </span>
+                <span className="text-color side-menu-name">Login</span>
+              </li>
+            )}
           </ul>
         </aside>
         {showSidebar && <div className="drop-shadow"></div>}

@@ -11,6 +11,7 @@
   --chip-active-bg-color: #fff;
   --chip-active-text-color: #000;
   --card-bg-color: #000;
+  --card-border-color: #252525;
 
   background-color: var(--theme-color);
   color: var(--text-color);
@@ -24,6 +25,7 @@
   --chip-active-bg-color: #000;
   --chip-active-text-color: #fff;
   --card-bg-color: #fff;
+  --card-border-color: #d3d3d3;
 
   background-color: var(--theme-color);
   color: var(--text-color);
@@ -37,8 +39,20 @@
   box-shadow: 0px 0px 10px var(--shadow-color);
 }
 
+.main-min-height {
+  min-height: calc(100vh - 5.2rem);
+}
+
+.avoid-text-highlight {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+
 /* Buttons */
-.btn {
+.btn-radius {
   border-radius: 20px;
 }
 
@@ -55,10 +69,59 @@
   box-shadow: 0px 0px 2px var(--sidebar-shadow);
 }
 
-.avoid-text-highlight {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: -moz-none;
-  -o-user-select: none;
-  user-select: none;
+/* Auth */
+.auth-form {
+  background-color: var(--card-bg-color);
+  min-width: 25rem;
+  border: 1px solid var(--card-border-color);
+}
+
+.auth-input {
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+.auth-input:focus {
+  outline: none;
+}
+
+.auth-form .btn {
+  display: block;
+  width: 100%;
+  padding: 0.4rem 0.8rem;
+}
+
+/* Font weight utility classes */
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.fw-900 {
+  font-weight: 900;
+}
+
+/* Cursor */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Border radius */
+.top-radius-5 {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.bottom-radius-5 {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
