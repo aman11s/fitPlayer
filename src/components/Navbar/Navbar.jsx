@@ -18,11 +18,15 @@ export const Navbar = ({ pathname, setShowSidebar }) => {
 
   const [activeDropDown, setActiveDropDown] = useState(false);
 
+  const notGridPage = () => {
+    return pathname !== "/" && pathname !== "/login" && pathname !== "/signup";
+  };
+
   return (
     <>
       <nav className="nav-bar avoid-text-highlight shadow">
         <div className="left-nav container-flex-align-center">
-          {pathname !== "/" && (
+          {notGridPage() && (
             <HiMenu
               onClick={() => setShowSidebar((prev) => !prev)}
               className="ham-menu-icon cursor-pointer mx-2"
