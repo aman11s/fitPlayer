@@ -6,6 +6,14 @@ nav.nav-bar {
   background-color: var(--theme-color);
 }
 
+nav .left-nav {
+  margin-left: 1rem;
+}
+
+nav .right-nav {
+  margin-right: 0;
+}
+
 .nav-icons {
   font-size: 2rem;
   margin: 0;
@@ -13,10 +21,6 @@ nav.nav-bar {
 
 .ham-menu-icon {
   display: none;
-}
-
-nav .right-nav {
-  margin-right: 1.5rem;
 }
 
 .user {

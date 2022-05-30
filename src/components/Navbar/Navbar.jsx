@@ -24,7 +24,7 @@ export const Navbar = ({ pathname, setShowSidebar }) => {
 
   return (
     <>
-      <nav className="nav-bar avoid-text-highlight shadow">
+      <nav className="nav-bar avoid-text-highlight shadow px-2">
         <div className="left-nav container-flex-align-center">
           {notGridPage() && (
             <HiMenu
