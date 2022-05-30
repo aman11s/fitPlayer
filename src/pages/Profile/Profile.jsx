@@ -15,7 +15,7 @@ export const Profile = () => {
   const { firstName, lastName, email } = user;
 
   return (
-    <main className="main-container profile-main">
+    <main className="main-container profile-main main-min-height">
       <h2 className="h2 mt-3">My profile</h2>
 
       <div className="user-profile-card container-flex-y-center mt-4 p-3 radius-5 shadow">
