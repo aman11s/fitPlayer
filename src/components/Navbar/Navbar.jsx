@@ -59,7 +59,9 @@ export const Navbar = ({ pathname, setShowSidebar }) => {
                   )}
                   <HiOutlineUser className="nav-icons" />
                 </div>
-                {activeDropDown && <DropDownList />}
+                {activeDropDown && (
+                  <DropDownList setActiveDropDown={setActiveDropDown} />
+                )}
               </div>
             ) : (
               <Link
