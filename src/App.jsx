@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { Navbar, Sidebar } from "./components";
+import { Navbar, RequiresAuth, Sidebar } from "./components";
 import { useTheme } from "./contexts";
-import { Home, Videos, Login, Signup } from "./pages";
+import { Home, Videos, Login, Signup, Profile } from "./pages";
 import "./App.css";
 
 function App() {
@@ -28,6 +28,11 @@ function App() {
           <Route path="/videos" element={<Videos />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+
+          {/* Private Routes */}
+          <Route element={<RequiresAuth />}>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
         </Routes>
       </div>
     </div>

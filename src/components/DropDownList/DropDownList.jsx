@@ -11,7 +11,9 @@ export const DropDownList = () => {
   return (
     <>
       <ul className="drop-down-list radius-5">
-        <li className="p-2 top-radius-5">Profile</li>
+        <li onClick={() => navigate("/profile")} className="p-2 top-radius-5">
+          Profile
+        </li>
         <li
           onClick={() => logoutHandler({ navigate, setUserData })}
           className="p-2 bottom-radius-5"
