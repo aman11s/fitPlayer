@@ -12,6 +12,7 @@
   --chip-active-text-color: #000;
   --card-bg-color: #000;
   --card-border-color: #252525;
+  --popup-menu-bg-color: #333333;
 
   background-color: var(--theme-color);
   color: var(--text-color);
@@ -26,6 +27,7 @@
   --chip-active-text-color: #fff;
   --card-bg-color: #fff;
   --card-border-color: #d3d3d3;
+  --popup-menu-bg-color: #dbdbdb;
 
   background-color: var(--theme-color);
   color: var(--text-color);
