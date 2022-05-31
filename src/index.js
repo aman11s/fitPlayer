@@ -3,7 +3,12 @@ import App from "./App";
 import { makeServer } from "./server";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider, ThemeProvider, VideoProvider } from "./contexts";
+import {
+  AuthProvider,
+  PlaylistModalProvider,
+  ThemeProvider,
+  VideoProvider,
+} from "./contexts";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
@@ -17,7 +22,9 @@ root.render(
       <ThemeProvider>
         <AuthProvider>
           <VideoProvider>
-            <App />
+            <PlaylistModalProvider>
+              <App />
+            </PlaylistModalProvider>
           </VideoProvider>
         </AuthProvider>
       </ThemeProvider>
