@@ -5,3 +5,4 @@ export { VideoCard } from "./VideoCard/VideoCard";
 export { DropDownList } from "./DropDownList/DropDownList";
 export { RequiresAuth } from "./RequiresAuth/RequiresAuth";
 export { PopupMenu } from "./PopupMenu/PopupMenu";
+export { PlaylistModal } from "./PlaylistModal/PlaylistModal";

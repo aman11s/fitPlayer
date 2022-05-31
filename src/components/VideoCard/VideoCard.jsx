@@ -33,7 +33,9 @@ export const VideoCard = ({ videos }) => {
               onClick={() => setPopupMenuActive(!popupMenuActive)}
               className="bx bx-dots-vertical-rounded cursor-pointer more-icon mr-1 p-1"
             ></i>
-            {popupMenuActive && <PopupMenu />}
+            {popupMenuActive && (
+              <PopupMenu setPopupMenuActive={setPopupMenuActive} />
+            )}
           </div>
         </div>
       </div>

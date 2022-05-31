@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { Navbar, RequiresAuth, Sidebar } from "./components";
-import { useTheme } from "./contexts";
+import { Navbar, PlaylistModal, RequiresAuth, Sidebar } from "./components";
+import { usePlaylistModal, useTheme } from "./contexts";
 import { Home, Videos, Login, Signup, Profile } from "./pages";
 import "./App.css";
 
 function App() {
   const { theme } = useTheme();
+  const { playlistModalActive } = usePlaylistModal();
   const [showSidebar, setShowSidebar] = useState(false);
   const { pathname } = useLocation();
 
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className={`${theme}-mode`}>
       <Toaster />
+      {playlistModalActive && <PlaylistModal />}
       <Navbar pathname={pathname} setShowSidebar={setShowSidebar} />
       <div className={`${notGridPage() && "grid-page-layout"}`}>
         <Sidebar pathname={pathname} showSidebar={showSidebar} />
