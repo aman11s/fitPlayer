@@ -95,7 +95,7 @@ export const Signup = () => {
                   name={name}
                   placeholder={`Enter your ${placeholder}`}
                   value={formData[name]}
-                  className="px-2 py-1 mb-2 auth-input"
+                  className="px-2 py-1 mb-2 input-box auth-input"
                   required
                 />
               </label>

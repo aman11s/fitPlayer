@@ -83,7 +83,7 @@ export const Login = () => {
                   name={name}
                   placeholder={`Enter your ${name}`}
                   value={formData[name]}
-                  className="px-2 py-1 mb-3 auth-input"
+                  className="px-2 py-1 mb-3 input-box auth-input"
                   required
                 />
               </label>
