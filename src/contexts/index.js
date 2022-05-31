@@ -5,3 +5,4 @@ export {
   PlaylistModalProvider,
   usePlaylistModal,
 } from "./playlist-modal-context";
+export { PlaylistProvider, usePlaylist } from "./playlist-context";
