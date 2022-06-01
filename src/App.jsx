@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { Navbar, PlaylistModal, RequiresAuth, Sidebar } from "./components";
 import { usePlaylistModal, useTheme } from "./contexts";
-import { Home, Videos, Login, Signup, Profile } from "./pages";
+import { Home, Videos, Login, Signup, Profile, Playlists } from "./pages";
 import "./App.css";
 
 function App() {
@@ -34,6 +34,7 @@ function App() {
           {/* Private Routes */}
           <Route element={<RequiresAuth />}>
             <Route path="/profile" element={<Profile />} />
+            <Route path="/playlists" element={<Playlists />} />
           </Route>
         </Routes>
       </div>

@@ -1,0 +1,31 @@
+.playlist-card {
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+  min-width: 20rem;
+}
+
+.playlist-card-img-overlay {
+  background-color: var(--primary-color);
+  min-height: 15rem;
+  position: relative;
+}
+
+.playlist-overlay-text {
+  position: absolute;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 50%;
+}
+
+.playlist-overlay-text span {
+  color: #fff;
+}
+
+.trash-btn-icon {
+  border: none;
+  background-color: transparent;
+  margin-left: auto;
+  font-size: 1rem;
+  color: var(--text-color);
+}
