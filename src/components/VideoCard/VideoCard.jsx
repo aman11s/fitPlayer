@@ -34,7 +34,10 @@ export const VideoCard = ({ videos }) => {
               className="bx bx-dots-vertical-rounded cursor-pointer more-icon mr-1 p-1"
             ></i>
             {popupMenuActive && (
-              <PopupMenu setPopupMenuActive={setPopupMenuActive} />
+              <PopupMenu
+                videos={videos}
+                setPopupMenuActive={setPopupMenuActive}
+              />
             )}
           </div>
         </div>

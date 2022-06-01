@@ -3,10 +3,11 @@ import { RiPlayListAddFill } from "react-icons/ri";
 import { BsFillClockFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useAuth, usePlaylistModal } from "../../contexts";
+import { constants } from "../../utils";
 import "./PopupMenu.css";
 
-export const PopupMenu = ({ setPopupMenuActive }) => {
-  const { setPlaylistModalActive } = usePlaylistModal();
+export const PopupMenu = ({ videos, setPopupMenuActive }) => {
+  const { playlistModalDispatch } = usePlaylistModal();
   const {
     userData: { token },
   } = useAuth();
@@ -14,7 +15,10 @@ export const PopupMenu = ({ setPopupMenuActive }) => {
 
   const addToPlaylistOnClickHandler = () => {
     if (token) {
-      setPlaylistModalActive(true);
+      playlistModalDispatch({
+        type: constants.OPEN_P_MODAL,
+        payload: { open_modal: true, get_video: videos },
+      });
       setPopupMenuActive(false);
     } else {
       navigate("/login", { replace: true });

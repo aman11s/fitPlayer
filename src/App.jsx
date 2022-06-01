@@ -9,7 +9,9 @@ import "./App.css";
 
 function App() {
   const { theme } = useTheme();
-  const { playlistModalActive } = usePlaylistModal();
+  const {
+    playlistModalState: { isActive },
+  } = usePlaylistModal();
   const [showSidebar, setShowSidebar] = useState(false);
   const { pathname } = useLocation();
 
@@ -25,7 +27,7 @@ function App() {
   return (
     <div className={`${theme}-mode`}>
       <Toaster />
-      {playlistModalActive && <PlaylistModal />}
+      {isActive && <PlaylistModal />}
       <Navbar pathname={pathname} setShowSidebar={setShowSidebar} />
       <div className={`${notGridPage() && "grid-page-layout"}`}>
         <Sidebar pathname={pathname} showSidebar={showSidebar} />

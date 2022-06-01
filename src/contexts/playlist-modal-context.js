@@ -1,12 +1,21 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useReducer } from "react";
+import { playlistModalReducer } from "../reducers";
 
 const PlaylistModalContext = createContext(null);
 
+const initialPlaylistModalState = {
+  isActive: false,
+  video: {},
+};
+
 const PlaylistModalProvider = ({ children }) => {
-  const [playlistModalActive, setPlaylistModalActive] = useState(false);
+  const [playlistModalState, playlistModalDispatch] = useReducer(
+    playlistModalReducer,
+    initialPlaylistModalState
+  );
   return (
     <PlaylistModalContext.Provider
-      value={{ playlistModalActive, setPlaylistModalActive }}
+      value={{ playlistModalState, playlistModalDispatch }}
     >
       {children}
     </PlaylistModalContext.Provider>
