@@ -27,3 +27,30 @@ export const addNewPlaylistHandler = async ({
     console.error(e);
   }
 };
+
+export const deletePlaylistHandler = async ({
+  playlistId,
+  token,
+  setDisableBtn,
+  playlistDispatch,
+}) => {
+  try {
+    setDisableBtn(true);
+    const { data, status } = await axios({
+      method: "DELETE",
+      url: `/api/user/playlists/${playlistId}`,
+      headers: { authorization: token },
+    });
+
+    if (status === 200) {
+      setDisableBtn(false);
+      playlistDispatch({
+        type: constants.DELETE_PLAYLIST,
+        payload: { delete_playlist: data.playlists },
+      });
+      toast.success("Playlist successfully deleted");
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};

@@ -12,7 +12,7 @@ export const Playlists = () => {
       <main className="main-container main-min-height">
         <div className="grid-minmax-card m-4">
           {playlists.map((playlists) => {
-            return <PlaylistCard {...playlists} />;
+            return <PlaylistCard key={playlists._id} playlists={playlists} />;
           })}
         </div>
       </main>

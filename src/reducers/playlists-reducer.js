@@ -8,6 +8,9 @@ export const playlistReducer = (state, { type, payload }) => {
     case constants.UPDATE_PLAYLISTS:
       return { ...state, playlists: payload.update_playlist };
 
+    case constants.DELETE_PLAYLIST:
+      return { ...state, playlists: payload.delete_playlist };
+
     default:
       return state;
   }
