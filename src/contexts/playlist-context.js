@@ -21,23 +21,25 @@ const PlaylistProvider = ({ children }) => {
   } = useAuth();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { data, status } = await axios({
-          method: "GET",
-          url: "/api/user/playlists",
-          headers: { authorization: token },
-        });
-        if (status === 200) {
-          playlistDispatch({
-            type: constants.INITIALISE_PLAYLISTS,
-            payload: { initialise_playlists: data.playlists },
+    if (token) {
+      (async () => {
+        try {
+          const { data, status } = await axios({
+            method: "GET",
+            url: "/api/user/playlists",
+            headers: { authorization: token },
           });
+          if (status === 200) {
+            playlistDispatch({
+              type: constants.INITIALISE_PLAYLISTS,
+              payload: { initialise_playlists: data.playlists },
+            });
+          }
+        } catch (e) {
+          console.error(e);
         }
-      } catch (e) {
-        console.error(e);
-      }
-    })();
+      })();
+    }
   }, [token]);
 
   return (
