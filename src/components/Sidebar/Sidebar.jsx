@@ -59,7 +59,12 @@ export const Sidebar = ({ showSidebar }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  if (pathname !== "/" && pathname !== "/login" && pathname !== "/signup") {
+  if (
+    pathname !== "/" &&
+    pathname !== "/login" &&
+    pathname !== "/signup" &&
+    pathname !== "/mock"
+  ) {
     return (
       <>
         <aside

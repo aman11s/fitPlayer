@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { Navbar, PlaylistModal, RequiresAuth, Sidebar } from "./components";
 import { usePlaylistModal, useTheme } from "./contexts";
 import { Home, Videos, Login, Signup, Profile, Playlists } from "./pages";
+import Mockman from "mockman-js";
 import "./App.css";
 
 function App() {
@@ -13,7 +14,12 @@ function App() {
   const { pathname } = useLocation();
 
   const notGridPage = () => {
-    return pathname !== "/" && pathname !== "/login" && pathname !== "/signup";
+    return (
+      pathname !== "/" &&
+      pathname !== "/login" &&
+      pathname !== "/signup" &&
+      pathname !== "/mock"
+    );
   };
 
   return (
@@ -30,6 +36,7 @@ function App() {
           <Route path="/videos" element={<Videos />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/mock" element={<Mockman />} />
 
           {/* Private Routes */}
           <Route element={<RequiresAuth />}>
