@@ -1,5 +1,6 @@
 import axios from "axios";
 import { constants } from "../utils";
+import toast from "react-hot-toast";
 
 export const addNewPlaylistHandler = async ({
   e,
@@ -18,8 +19,9 @@ export const addNewPlaylistHandler = async ({
     if (status === 201) {
       playlistDispatch({
         type: constants.UPDATE_PLAYLISTS,
-        payload: { update_playlist: data.playlists.title },
+        payload: { update_playlist: data.playlists },
       });
+      toast.success("New playlist created");
     }
   } catch (e) {
     console.error(e);

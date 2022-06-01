@@ -10,7 +10,10 @@ export const PlaylistModal = () => {
   const {
     userData: { token },
   } = useAuth();
-  const { playlistDispatch } = usePlaylist();
+  const {
+    playlistState: { playlists },
+    playlistDispatch,
+  } = usePlaylist();
 
   const [newPlaylist, setNewPlaylist] = useState("");
 
@@ -26,10 +29,11 @@ export const PlaylistModal = () => {
   return (
     <div onClick={modalOnClickHandler} className="playlist-modal-wrapper">
       <form
-        onSubmit={(e) =>
-          addNewPlaylistHandler({ e, token, newPlaylist, playlistDispatch })
-        }
-        className="add-playlist-form px-5 py-6 radius-5 container-flex-align-center"
+        onSubmit={(e) => {
+          addNewPlaylistHandler({ e, token, newPlaylist, playlistDispatch });
+          setNewPlaylist("");
+        }}
+        className="add-playlist-form px-5 py-6 radius-5"
       >
         <span
           onClick={() => setPlaylistModalActive(false)}
@@ -37,19 +41,35 @@ export const PlaylistModal = () => {
         >
           <MdClose />
         </span>
-        <input
-          onChange={(e) => setNewPlaylist(e.target.value)}
-          value={newPlaylist}
-          type="text"
-          placeholder="Add new playlist"
-          className="px-2 py-1 input-box"
-        />
-        <button
-          type="submit"
-          className="pl-3 icon add-playlist-btn-icon container-flex-align-center cursor-pointer"
-        >
-          <BsFillPlusCircleFill />
-        </button>
+
+        {playlists.map(({ _id, title }) => {
+          return (
+            <label
+              className="px-1 pb-2 container-flex-align-center cursor-pointer"
+              key={_id}
+            >
+              <input type="checkbox" name="playlist" />
+              <span className="pl-1">{title}</span>
+            </label>
+          );
+        })}
+
+        <div className="add-playlist-input container-flex-align-center">
+          <input
+            onChange={(e) => setNewPlaylist(e.target.value)}
+            value={newPlaylist}
+            type="text"
+            placeholder="Add new playlist"
+            className="px-2 py-1 input-box"
+            required
+          />
+          <button
+            type="submit"
+            className="pl-3 icon add-playlist-btn-icon container-flex-align-center cursor-pointer"
+          >
+            <BsFillPlusCircleFill />
+          </button>
+        </div>
       </form>
     </div>
   );

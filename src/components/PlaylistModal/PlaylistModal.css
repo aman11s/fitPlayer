@@ -13,9 +13,11 @@
   margin: 20% auto;
   max-width: 40rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.add-playlist-form input {
+.add-playlist-input input {
   width: 85%;
 }
 
