@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import { RiPlayListAddFill } from "react-icons/ri";
 import "./PlaylistCard.css";
 
 export const PlaylistCard = ({ _id, title, videos }) => {
@@ -10,6 +11,9 @@ export const PlaylistCard = ({ _id, title, videos }) => {
           <div className="playlist-card-img-overlay">
             <div className="playlist-overlay-text container-flex-center">
               <span className="medium-text">{videos.length}</span>
+              <span className="playlist-icon">
+                <RiPlayListAddFill />
+              </span>
             </div>
           </div>
           <div className="playlist-card-actions pt-2 container-flex">
