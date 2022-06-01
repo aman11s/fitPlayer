@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useAuth } from "../../contexts";
 import { loginHandler } from "../../services";
@@ -38,8 +38,12 @@ export const Login = () => {
 
   const { email, password } = formData;
 
-  const { setUserData } = useAuth();
-  const navigate = useNavigate();
+  const {
+    userData: { token },
+    setUserData,
+  } = useAuth();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || -1;
 
   const changeHandler = (e) => {
     setFormData((prevData) => ({
@@ -57,6 +61,7 @@ export const Login = () => {
 
   return (
     <>
+      {token && <Navigate to={from} replace />}
       <main className="main-min-height container-flex-center">
         <form
           onSubmit={(e) =>
@@ -66,7 +71,6 @@ export const Login = () => {
               email,
               password,
               setUserData,
-              navigate,
             })
           }
           className="auth-form p-4 radius-5 shadow"

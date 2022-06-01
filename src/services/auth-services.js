@@ -7,7 +7,6 @@ export const loginHandler = async ({
   email,
   password,
   setUserData,
-  navigate,
 }) => {
   e.preventDefault();
   try {
@@ -22,7 +21,6 @@ export const loginHandler = async ({
       const userData = { token: data.encodedToken, user: data.foundUser };
       localStorage.setItem("userData", JSON.stringify(userData));
       setUserData(userData);
-      navigate("/videos");
       toast.success("Successfully Logged in!");
     }
   } catch (error) {
@@ -38,7 +36,7 @@ export const loginHandler = async ({
   }
 };
 
-export const singupHandler = async ({ e, formData, setUserData, navigate }) => {
+export const singupHandler = async ({ e, formData, setUserData }) => {
   e.preventDefault();
   try {
     const { data, status } = await axios({
@@ -51,7 +49,6 @@ export const singupHandler = async ({ e, formData, setUserData, navigate }) => {
       localStorage.setItem("userData", JSON.stringify(userData));
       setUserData(userData);
       toast.success("Successfully Singed up!");
-      navigate("/videos");
     }
   } catch (e) {
     console.error(e);
