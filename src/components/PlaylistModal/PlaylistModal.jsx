@@ -5,6 +5,7 @@ import { useAuth, usePlaylist, usePlaylistModal } from "../../contexts";
 import {
   addNewPlaylistHandler,
   addVideoToPlaylistHandler,
+  removeVideoFromPlaylistHandler,
 } from "../../services";
 import { constants, videoAlreadyInPlaylist } from "../../utils";
 import "./PlaylistModal.css";
@@ -42,6 +43,13 @@ export const PlaylistModal = () => {
         playlistId: _id,
         token,
         video,
+        playlistDispatch,
+      });
+    } else {
+      removeVideoFromPlaylistHandler({
+        playlistId: _id,
+        token,
+        videoId: video._id,
         playlistDispatch,
       });
     }

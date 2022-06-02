@@ -3,4 +3,5 @@ export {
   addNewPlaylistHandler,
   deletePlaylistHandler,
   addVideoToPlaylistHandler,
+  removeVideoFromPlaylistHandler,
 } from "./playlists-services";

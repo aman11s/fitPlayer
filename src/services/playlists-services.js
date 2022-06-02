@@ -80,3 +80,27 @@ export const addVideoToPlaylistHandler = async ({
     console.error(e);
   }
 };
+
+export const removeVideoFromPlaylistHandler = async ({
+  playlistId,
+  token,
+  videoId,
+  playlistDispatch,
+}) => {
+  try {
+    const { data, status } = await axios({
+      method: "DELETE",
+      url: `/api/user/playlists/${playlistId}/${videoId}`,
+      headers: { authorization: token },
+    });
+    if (status === 200) {
+      toast.success("Video successfully removed");
+      playlistDispatch({
+        type: constants.TOGGLE_PLAYLIST_VIDEO,
+        payload: data.playlists,
+      });
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};
