@@ -11,6 +11,9 @@ export const playlistReducer = (state, { type, payload }) => {
     case constants.DELETE_PLAYLIST:
       return { ...state, playlists: payload.delete_playlist };
 
+    case constants.TOGGLE_PLAYLIST_VIDEO:
+      return { ...state, playlists: payload };
+
     default:
       return state;
   }

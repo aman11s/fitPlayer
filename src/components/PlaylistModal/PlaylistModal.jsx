@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
 import { useAuth, usePlaylist, usePlaylistModal } from "../../contexts";
-import { addNewPlaylistHandler } from "../../services/playlists-services";
+import {
+  addNewPlaylistHandler,
+  addVideoToPlaylistHandler,
+} from "../../services";
+import { constants, videoAlreadyInPlaylist } from "../../utils";
 import "./PlaylistModal.css";
 
 export const PlaylistModal = () => {
-  const { setPlaylistModalActive } = usePlaylistModal();
+  const {
+    playlistModalState: { video },
+    playlistModalDispatch,
+  } = usePlaylistModal();
   const {
     userData: { token },
   } = useAuth();
@@ -22,7 +29,21 @@ export const PlaylistModal = () => {
       e.target.classList.contains("playlist-modal-wrapper") &&
       e.target.tagName === "DIV"
     ) {
-      setPlaylistModalActive(false);
+      playlistModalDispatch({
+        type: constants.CLOSE_P_MODAL,
+      });
+    }
+  };
+
+  const playlistCheckboxHandler = (e, _id) => {
+    const isChecked = e.target.checked;
+    if (isChecked) {
+      addVideoToPlaylistHandler({
+        playlistId: _id,
+        token,
+        video,
+        playlistDispatch,
+      });
     }
   };
 
@@ -36,19 +57,30 @@ export const PlaylistModal = () => {
         className="add-playlist-form px-5 py-6 radius-5"
       >
         <span
-          onClick={() => setPlaylistModalActive(false)}
+          onClick={() =>
+            playlistModalDispatch({
+              type: constants.CLOSE_P_MODAL,
+            })
+          }
           className="close-playlist-modal-icon cursor-pointer"
         >
           <MdClose />
         </span>
 
-        {playlists.map(({ _id, title }) => {
+        {playlists.map((playlist) => {
+          const { _id, title } = playlist;
+          const inPlaylist = videoAlreadyInPlaylist(playlist, video);
           return (
             <label
               className="px-1 pb-2 container-flex-align-center cursor-pointer"
               key={_id}
             >
-              <input type="checkbox" name="playlist" />
+              <input
+                onChange={(e) => playlistCheckboxHandler(e, _id)}
+                type="checkbox"
+                name="playlist"
+                checked={inPlaylist}
+              />
               <span className="pl-1">{title}</span>
             </label>
           );
