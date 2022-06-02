@@ -73,7 +73,7 @@ export const addVideoToPlaylistHandler = async ({
       toast.success("Video successfully added");
       playlistDispatch({
         type: constants.TOGGLE_PLAYLIST_VIDEO,
-        payload: data.playlists,
+        payload: { playlist: data.playlists },
       });
     }
   } catch (e) {
@@ -97,7 +97,7 @@ export const removeVideoFromPlaylistHandler = async ({
       toast.success("Video successfully removed");
       playlistDispatch({
         type: constants.TOGGLE_PLAYLIST_VIDEO,
-        payload: data.playlists,
+        payload: { playlist: data.playlists },
       });
     }
   } catch (e) {

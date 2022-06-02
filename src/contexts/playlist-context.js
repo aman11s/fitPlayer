@@ -8,6 +8,7 @@ const PlaylistContext = createContext(null);
 
 const initialPlaylistState = {
   playlists: [],
+  singlePlaylist: {},
 };
 
 const PlaylistProvider = ({ children }) => {

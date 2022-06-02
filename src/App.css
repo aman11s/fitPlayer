@@ -62,6 +62,14 @@
   background-color: #e26139;
 }
 
+.trash-btn-icon {
+  border: none;
+  background-color: transparent;
+  margin-left: auto;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
 /* Grid Page Layout */
 .grid-page-layout {
   grid-template-columns: 15% 1fr 1fr 1fr;

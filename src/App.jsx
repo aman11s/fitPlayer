@@ -3,7 +3,15 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { Navbar, PlaylistModal, RequiresAuth, Sidebar } from "./components";
 import { usePlaylistModal, useTheme } from "./contexts";
-import { Home, Videos, Login, Signup, Profile, Playlists } from "./pages";
+import {
+  Home,
+  Videos,
+  Login,
+  Signup,
+  Profile,
+  Playlists,
+  SinglePlaylist,
+} from "./pages";
 import Mockman from "mockman-js";
 import "./App.css";
 
@@ -44,6 +52,7 @@ function App() {
           <Route element={<RequiresAuth />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/playlists" element={<Playlists />} />
+            <Route path="/playlists/:playlistId" element={<SinglePlaylist />} />
           </Route>
         </Routes>
       </div>

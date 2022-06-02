@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { RiPlayListAddFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 import { useAuth, usePlaylist } from "../../contexts";
 import { deletePlaylistHandler } from "../../services";
 import "./PlaylistCard.css";
@@ -11,6 +12,7 @@ export const PlaylistCard = ({ playlists }) => {
     userData: { token },
   } = useAuth();
   const { playlistDispatch } = usePlaylist();
+  const navigate = useNavigate();
 
   const [disableBtn, setDisableBtn] = useState(false);
 
@@ -18,7 +20,10 @@ export const PlaylistCard = ({ playlists }) => {
     <>
       <div key={_id} className="playlist-card radius-5">
         <div className="playlist-card-body p-2">
-          <div className="playlist-card-img-overlay cursor-pointer">
+          <div
+            onClick={() => navigate(`/playlists/${_id}`)}
+            className="playlist-card-img-overlay cursor-pointer"
+          >
             <div className="playlist-overlay-text container-flex-center">
               <span className="medium-text">{videos.length}</span>
               <span className="playlist-icon">

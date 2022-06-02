@@ -26,11 +26,3 @@
 .playlist-overlay-text span {
   color: #fff;
 }
-
-.trash-btn-icon {
-  border: none;
-  background-color: transparent;
-  margin-left: auto;
-  font-size: 1rem;
-  color: var(--text-color);
-}
