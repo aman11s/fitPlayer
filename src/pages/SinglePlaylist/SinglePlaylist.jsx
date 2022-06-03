@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { VideoCard } from "../../components";
-import { useAuth, usePlaylist } from "../../contexts";
-import { constants } from "../../utils";
+import { useAuth } from "../../contexts";
 
 export const SinglePlaylist = () => {
   const { playlistId } = useParams();
@@ -12,11 +11,7 @@ export const SinglePlaylist = () => {
     userData: { token },
   } = useAuth();
 
-  const {
-    playlistState: { singlePlaylist },
-    playlistDispatch,
-  } = usePlaylist();
-
+  const [singlePlaylist, setSinglePlaylist] = useState({});
   const [pageLoader, setPageLoader] = useState(false);
 
   useEffect(() => {
@@ -29,10 +24,7 @@ export const SinglePlaylist = () => {
           headers: { authorization: token },
         });
         if (status === 200) {
-          playlistDispatch({
-            type: constants.SINGLE_PLAYLIST,
-            payload: { single_playlist: data.playlist },
-          });
+          setSinglePlaylist(data.playlist);
         }
       } catch (e) {
         console.error(e);
@@ -40,7 +32,7 @@ export const SinglePlaylist = () => {
         setPageLoader(false);
       }
     })();
-  }, [playlistId, token, playlistDispatch]);
+  }, [playlistId, token]);
 
   if (pageLoader) {
     return (
@@ -56,7 +48,7 @@ export const SinglePlaylist = () => {
     <>
       <main className="main-container main-min-height">
         <div className="grid-minmax-card m-4">
-          {singlePlaylist.videos &&
+          {singlePlaylist?.videos &&
             singlePlaylist.videos.map((videos) => {
               return (
                 <VideoCard
@@ -64,6 +56,8 @@ export const SinglePlaylist = () => {
                   videos={videos}
                   trashIcon={{ trashIcon: true }}
                   playlistId={playlistId}
+                  singlePlaylist={singlePlaylist}
+                  setSinglePlaylist={setSinglePlaylist}
                 />
               );
             })}

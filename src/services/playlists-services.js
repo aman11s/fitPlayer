@@ -86,6 +86,8 @@ export const removeVideoFromPlaylistHandler = async ({
   token,
   videoId,
   playlistDispatch,
+  singlePlaylist,
+  setSinglePlaylist,
 }) => {
   try {
     const { data, status } = await axios({
@@ -94,11 +96,15 @@ export const removeVideoFromPlaylistHandler = async ({
       headers: { authorization: token },
     });
     if (status === 200) {
-      toast.success("Video successfully removed");
       playlistDispatch({
         type: constants.TOGGLE_PLAYLIST_VIDEO,
         payload: { playlist: data.playlists },
       });
+      setSinglePlaylist({
+        ...singlePlaylist,
+        videos: singlePlaylist?.videos.filter(({ _id }) => _id !== videoId),
+      });
+      toast.success("Video successfully removed");
     }
   } catch (e) {
     console.error(e);

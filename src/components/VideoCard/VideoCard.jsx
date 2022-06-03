@@ -6,7 +6,13 @@ import { FaTrashAlt } from "react-icons/fa";
 import { removeVideoFromPlaylistHandler } from "../../services";
 import { useAuth, usePlaylist } from "../../contexts";
 
-export const VideoCard = ({ videos, trashIcon, playlistId }) => {
+export const VideoCard = ({
+  videos,
+  trashIcon,
+  playlistId,
+  singlePlaylist,
+  setSinglePlaylist,
+}) => {
   const { _id, creator, creatorDp, thumbnail, title } = videos;
   const {
     userData: { token },
@@ -43,6 +49,8 @@ export const VideoCard = ({ videos, trashIcon, playlistId }) => {
                   token,
                   videoId: _id,
                   playlistDispatch,
+                  singlePlaylist,
+                  setSinglePlaylist,
                 })
               }
               className="trash-btn-icon cursor-pointer px-2"
