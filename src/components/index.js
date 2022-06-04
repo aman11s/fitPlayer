@@ -7,3 +7,4 @@ export { RequiresAuth } from "./RequiresAuth/RequiresAuth";
 export { PopupMenu } from "./PopupMenu/PopupMenu";
 export { PlaylistModal } from "./PlaylistModal/PlaylistModal";
 export { PlaylistCard } from "./PlaylistCard/PlaylistCard";
+export { PageHeader } from "./PageHeader/PageHeader";
