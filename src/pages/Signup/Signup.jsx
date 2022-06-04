@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { singupHandler } from "../../services";
 import { useAuth } from "../../contexts";
 
@@ -57,8 +57,12 @@ const initialFormData = {
 export const Signup = () => {
   const [formData, setFormData] = useState(initialFormData);
 
-  const { setUserData } = useAuth();
-  const navigate = useNavigate();
+  const {
+    userData: { token },
+    setUserData,
+  } = useAuth();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || -1;
 
   const changeHandler = (e) => {
     setFormData((prevData) => ({
@@ -76,10 +80,15 @@ export const Signup = () => {
 
   return (
     <>
+      {token && <Navigate to={from} replace />}
       <main className="container-flex-center">
         <form
           onSubmit={(e) =>
-            singupHandler({ e, formData, setUserData, navigate })
+            singupHandler({
+              e,
+              formData,
+              setUserData,
+            })
           }
           className="auth-form m-4 p-4 radius-5 shadow"
         >
@@ -95,7 +104,7 @@ export const Signup = () => {
                   name={name}
                   placeholder={`Enter your ${placeholder}`}
                   value={formData[name]}
-                  className="px-2 py-1 mb-2 auth-input"
+                  className="px-2 py-1 mb-2 input-box auth-input"
                   required
                 />
               </label>

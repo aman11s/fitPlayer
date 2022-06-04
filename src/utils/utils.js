@@ -11,3 +11,6 @@ export const shortStr = (str) => {
 
 export const filterByCategory = (category, video) =>
   video.filter(({ categoryName }) => categoryName === category.toLowerCase());
+
+export const videoAlreadyInPlaylist = (playlist, video) =>
+  playlist.videos.some(({ _id }) => _id === video._id);

@@ -18,7 +18,16 @@
   border: 2px solid var(--primary-color);
 }
 
-.more-icon {
+.vcard-menu {
   margin-left: auto;
+  position: relative;
+}
+
+.more-icon {
   font-size: 1.4rem;
+}
+
+.more-icon:hover {
+  background-color: var(--shadow-color);
+  border-radius: 50%;
 }

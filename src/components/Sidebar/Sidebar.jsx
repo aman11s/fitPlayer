@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ImHome } from "react-icons/im";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { RiPlayListAddFill } from "react-icons/ri";
@@ -51,14 +51,20 @@ const sidebarMenu = [
   },
 ];
 
-export const Sidebar = ({ pathname, showSidebar }) => {
+export const Sidebar = ({ showSidebar }) => {
   const {
     userData: { token },
     setUserData,
   } = useAuth();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-  if (pathname !== "/" && pathname !== "/login" && pathname !== "/signup") {
+  if (
+    pathname !== "/" &&
+    pathname !== "/login" &&
+    pathname !== "/signup" &&
+    pathname !== "/mock"
+  ) {
     return (
       <>
         <aside

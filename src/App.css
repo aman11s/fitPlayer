@@ -12,6 +12,7 @@
   --chip-active-text-color: #000;
   --card-bg-color: #000;
   --card-border-color: #252525;
+  --popup-menu-bg-color: #333333;
 
   background-color: var(--theme-color);
   color: var(--text-color);
@@ -26,6 +27,7 @@
   --chip-active-text-color: #fff;
   --card-bg-color: #fff;
   --card-border-color: #d3d3d3;
+  --popup-menu-bg-color: #dbdbdb;
 
   background-color: var(--theme-color);
   color: var(--text-color);
@@ -60,6 +62,14 @@
   background-color: #e26139;
 }
 
+.trash-btn-icon {
+  border: none;
+  background-color: transparent;
+  margin-left: auto;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
 /* Grid Page Layout */
 .grid-page-layout {
   grid-template-columns: 15% 1fr 1fr 1fr;
@@ -67,6 +77,18 @@
 
 .aside-container {
   box-shadow: 0px 0px 2px var(--sidebar-shadow);
+}
+
+/* inputs */
+
+.input-box {
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.input-box:focus {
+  outline: none;
 }
 
 /* Auth */
@@ -77,14 +99,7 @@
 }
 
 .auth-input {
-  border-radius: 5px;
-  border: 2px solid var(--primary-color);
   width: 100%;
-  font-size: 1.1rem;
-}
-
-.auth-input:focus {
-  outline: none;
 }
 
 .auth-form .btn {
@@ -113,6 +128,10 @@
 /* Cursor */
 .cursor-pointer {
   cursor: pointer;
+}
+
+button[disabled] {
+  cursor: not-allowed;
 }
 
 /* Border radius */

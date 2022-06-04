@@ -3,11 +3,9 @@
  * You can add videos of your wish with different attributes
  * */
 
-import { v4 as uuid } from "uuid";
-
 export const videos = [
   {
-    _id: uuid(),
+    _id: "Wo5dMEP_B0bI",
     title:
       "15 Minute Beginner Weight Training - Easy Exercises - HASfit Beginners Workout Routine - Strength",
     categoryName: "weightlifting",
@@ -20,7 +18,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLS8yUsoZP_JJAAdCc7AFQXutrv1tcblzl6JCS5yIQ=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "SO5rMEP_B1bI",
     title: "The PERFECT Beginner Workout (Sets and Reps Included)",
     categoryName: "weightlifting",
     link: "https://www.youtube.com/watch?v=ixkQaZXVQjs",
@@ -32,7 +30,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLQg6gDZ9Z0wuMSRwtdl9e0SiI0mklMDFXeGjBktXg=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "LT5dmEP_B2bI",
     title: "10 Things Nobody Tells You About Lifting Weights",
     categoryName: "weightlifting",
     link: "https://www.youtube.com/watch?v=mynQqj43qls",
@@ -44,7 +42,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLSQugCJYGSrjqN0sa9VjnxQ_TIglU8QAVkiPuE=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "Go5nUEP_B3bI",
     title: "15 Min Daily Yoga Routine for Beginners (Follow Along)",
     categoryName: "yoga",
     link: "https://www.youtube.com/watch?v=s2NQhpFGIOg",
@@ -56,7 +54,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLSEV5H0Dc_SHuQwWmvhnSJG4guCrWjvhTe8wlzLKA=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "Po5XMrP_B4fI",
     title: "Yoga For Anxiety and Stress",
     categoryName: "yoga",
     link: "https://www.youtube.com/watch?v=hJbRpHZr_d0",
@@ -68,7 +66,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLSsqgadKGeiBj_sxb1dC5_msmo_94JIIr4EPUdcFQ=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "Mo5dMlP_t5bI",
     title: "Yoga for Kids!",
     categoryName: "yoga",
     link: "https://www.youtube.com/watch?v=X655B4ISakg",
@@ -80,7 +78,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLQ4cu6Qig0rtxEhdStQOT01RB4NdZOQNfHmcxK6pQ=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "Ro2ddEP_B6bI",
     title: "WEIGHT LOSS - Indian Weight Loss Diet",
     categoryName: "diet",
     link: "https://www.youtube.com/watch?v=-X6395gykhg",
@@ -92,7 +90,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLSEV5H0Dc_SHuQwWmvhnSJG4guCrWjvhTe8wlzLKA=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "Jo5ndeP_s7bI",
     title: "How to Create a Healthy Plate",
     categoryName: "diet",
     link: "https://www.youtube.com/watch?v=Gmh_xMMJ2Pw",
@@ -104,7 +102,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLTgCGOsCCoY689hswdv24tcVGZpQTh9zkmUwf5Dww=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "qo5dChP_g8bI",
     title: "The Only Diet Plan That Ayurveda Recommends (Men & Women)",
     categoryName: "diet",
     link: "https://www.youtube.com/watch?v=6ZUFT0CwU1w",
@@ -116,7 +114,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLSEV5H0Dc_SHuQwWmvhnSJG4guCrWjvhTe8wlzLKA=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "Io5dwEP_i9bI",
     title: "7 DAY CHALLENGE: Lose Belly & Arms Fat | Zumba Class",
     categoryName: "zumba",
     link: "https://www.youtube.com/watch?v=gCROJglfRxo",
@@ -127,7 +125,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLTknUZOFNUGe0tCw9v_G26UqzqVx5nxTqrOq4bQ=s48-c-k-c0x00ffffff-no-rj",
   },
   {
-    _id: uuid(),
+    _id: "vo5dgEP_o10bI",
     title: "Kamelia - Amor (Zumba Choreography by Claudiu Gutu)",
     categoryName: "zumba",
     link: "https://www.youtube.com/watch?v=OGCX_WU6vRc",
@@ -139,7 +137,7 @@ export const videos = [
       "https://yt3.ggpht.com/ytc/AKedOLRWqrKoyhwhQDsn1SSRNJS37HBn1WlSS17Q4ww4=s48-c-k-c0x00ffffff-no-rj-mo",
   },
   {
-    _id: uuid(),
+    _id: "Mo5dKfP_e11bI",
     title:
       "Bollywood Dance Cardio 15 Minute NonStop Workout | High and Low Impact | Rangeela Dance Company",
     categoryName: "zumba",
