@@ -11,7 +11,8 @@ export const PageHeader = ({ pageHeaderDetails }) => {
           <div className="page-header-text">
             <div className="medium-text fw-700">{pageTitle}</div>
             <div>
-              {state.length} {state.length > 1 ? `${subTitle}s` : `${subTitle}`}
+              {state?.length}{" "}
+              {state?.length > 1 ? `${subTitle}s` : `${subTitle}`}
             </div>
           </div>
         </div>

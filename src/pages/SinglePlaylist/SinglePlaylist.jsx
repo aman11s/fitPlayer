@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import { VideoCard } from "../../components";
+import { PageHeader, VideoCard } from "../../components";
 import { useAuth } from "../../contexts";
 
 export const SinglePlaylist = () => {
@@ -34,6 +34,12 @@ export const SinglePlaylist = () => {
     })();
   }, [playlistId, token]);
 
+  const pageHeaderDetails = {
+    pageTitle: singlePlaylist.title,
+    subTitle: "video",
+    state: singlePlaylist?.videos,
+  };
+
   if (pageLoader) {
     return (
       <>
@@ -47,6 +53,7 @@ export const SinglePlaylist = () => {
   return (
     <>
       <main className="main-container main-min-height">
+        <PageHeader pageHeaderDetails={pageHeaderDetails} />
         <div className="grid-minmax-card m-4">
           {singlePlaylist?.videos &&
             singlePlaylist.videos.map((videos) => {
