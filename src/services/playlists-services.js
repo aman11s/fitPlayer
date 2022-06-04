@@ -100,10 +100,11 @@ export const removeVideoFromPlaylistHandler = async ({
         type: constants.TOGGLE_PLAYLIST_VIDEO,
         payload: { playlist: data.playlists },
       });
-      setSinglePlaylist({
-        ...singlePlaylist,
-        videos: singlePlaylist?.videos.filter(({ _id }) => _id !== videoId),
-      });
+      setSinglePlaylist &&
+        setSinglePlaylist({
+          ...singlePlaylist,
+          videos: singlePlaylist?.videos.filter(({ _id }) => _id !== videoId),
+        });
       toast.success("Video successfully removed");
     }
   } catch (e) {
