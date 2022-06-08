@@ -59,21 +59,18 @@ export const SinglePlaylist = () => {
         <div className="grid-minmax-card m-4">
           {singlePlaylist?.videos &&
             singlePlaylist.videos.map((videos) => {
-              const removeHandler = () =>
-                removeVideoFromPlaylistHandler({
-                  playlistId,
-                  token,
-                  videoId: videos._id,
-                  playlistDispatch,
-                  singlePlaylist,
-                  setSinglePlaylist,
-                });
+              const singlePlaylistProps = {
+                singlePlaylist,
+                setSinglePlaylist,
+                playlistId,
+              };
               return (
                 <VideoCard
                   key={videos._id}
                   videos={videos}
                   trashIcon={{ trashIcon: true }}
-                  removeHandler={removeHandler}
+                  videoType={"singlePlaylist"}
+                  singlePlaylistProps={singlePlaylistProps}
                 />
               );
             })}
