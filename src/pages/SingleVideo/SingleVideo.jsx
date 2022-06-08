@@ -4,19 +4,20 @@ import { useParams } from "react-router-dom";
 import { AiFillLike } from "react-icons/ai";
 import { RiPlayListAddFill } from "react-icons/ri";
 import { BsFillClockFill } from "react-icons/bs";
+import { ClipLoader } from "react-spinners";
 import "./SingleVideo.css";
 
 export const SingleVideo = () => {
   const { videoId } = useParams();
   const [singleVideo, setSingleVideo] = useState({});
-
-  // console.log(singleVideo);
+  const [pageLoader, setPageLoader] = useState(false);
 
   const { creator, creatorDp, description, title } = singleVideo;
 
   useEffect(() => {
     (async () => {
       try {
+        setPageLoader(true);
         const { data, status } = await axios({
           method: "GET",
           url: `/api/video/${videoId}`,
@@ -26,13 +27,25 @@ export const SingleVideo = () => {
         }
       } catch (e) {
         console.error(e);
+      } finally {
+        setPageLoader(false);
       }
     })();
   }, [videoId]);
 
+  if (pageLoader) {
+    return (
+      <>
+        <main className="main-container container-flex-center main-min-height">
+          <ClipLoader color="#ef6236" speedMultiplier={2} size={40} />
+        </main>
+      </>
+    );
+  }
+
   return (
     <>
-      <main className="p-2 main-container">
+      <main className="p-2 main-container main-min-height">
         <div className="iframe-container">
           <iframe
             src={`https://www.youtube.com/embed/${singleVideo._id}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3`}
