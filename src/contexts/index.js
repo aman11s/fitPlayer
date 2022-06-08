@@ -6,3 +6,4 @@ export {
   usePlaylistModal,
 } from "./playlist-modal-context";
 export { PlaylistProvider, usePlaylist } from "./playlist-context";
+export { LikeProvider, useLike } from "./like-context";

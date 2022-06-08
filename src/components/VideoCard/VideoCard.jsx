@@ -1,27 +1,57 @@
 import React, { useState } from "react";
-import "./VideoCard.css";
 import { shortStr } from "../../utils";
 import { PopupMenu } from "../../components";
 import { FaTrashAlt } from "react-icons/fa";
-import { removeVideoFromPlaylistHandler } from "../../services";
-import { useAuth, usePlaylist } from "../../contexts";
 import { useNavigate } from "react-router-dom";
+import { dislikeHandler, removeVideoFromPlaylistHandler } from "../../services";
+import { useAuth, useLike, usePlaylist } from "../../contexts";
+import "./VideoCard.css";
 
 export const VideoCard = ({
   videos,
   trashIcon,
-  playlistId,
-  singlePlaylist,
-  setSinglePlaylist,
+  videoType,
+  singlePlaylistProps,
 }) => {
   const { _id, creator, creatorDp, thumbnail, title } = videos;
+  const navigate = useNavigate();
+
   const {
     userData: { token },
   } = useAuth();
   const { playlistDispatch } = usePlaylist();
-  const navigate = useNavigate();
+  const { likeDispatch } = useLike();
 
   const [popupMenuActive, setPopupMenuActive] = useState(false);
+  const [disableBtn, setDisableBtn] = useState(false);
+
+  const deleteHandler = () => {
+    switch (videoType) {
+      case "singlePlaylist":
+        const { playlistId, singlePlaylist, setSinglePlaylist } =
+          singlePlaylistProps;
+        return removeVideoFromPlaylistHandler({
+          playlistId,
+          token,
+          videoId: _id,
+          playlistDispatch,
+          singlePlaylist,
+          setSinglePlaylist,
+          setDisableBtn,
+        });
+
+      case "likes":
+        return dislikeHandler({
+          videoId: _id,
+          token,
+          likeDispatch,
+          setDisableBtn,
+        });
+
+      default:
+        break;
+    }
+  };
 
   return (
     <>
@@ -45,17 +75,9 @@ export const VideoCard = ({
           <span className="ml-2">{shortStr(creator)}</span>
           {trashIcon ? (
             <button
-              onClick={() =>
-                removeVideoFromPlaylistHandler({
-                  playlistId,
-                  token,
-                  videoId: _id,
-                  playlistDispatch,
-                  singlePlaylist,
-                  setSinglePlaylist,
-                })
-              }
+              onClick={deleteHandler}
               className="trash-btn-icon cursor-pointer px-2"
+              disabled={disableBtn}
             >
               <FaTrashAlt />
             </button>

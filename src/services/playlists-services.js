@@ -88,14 +88,17 @@ export const removeVideoFromPlaylistHandler = async ({
   playlistDispatch,
   singlePlaylist,
   setSinglePlaylist,
+  setDisableBtn,
 }) => {
   try {
+    setDisableBtn && setDisableBtn(true);
     const { data, status } = await axios({
       method: "DELETE",
       url: `/api/user/playlists/${playlistId}/${videoId}`,
       headers: { authorization: token },
     });
     if (status === 200) {
+      setDisableBtn && setDisableBtn(false);
       playlistDispatch({
         type: constants.TOGGLE_PLAYLIST_VIDEO,
         payload: { playlist: data.playlists },
