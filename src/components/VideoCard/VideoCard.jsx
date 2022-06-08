@@ -5,6 +5,7 @@ import { PopupMenu } from "../../components";
 import { FaTrashAlt } from "react-icons/fa";
 import { removeVideoFromPlaylistHandler } from "../../services";
 import { useAuth, usePlaylist } from "../../contexts";
+import { useNavigate } from "react-router-dom";
 
 export const VideoCard = ({
   videos,
@@ -18,13 +19,14 @@ export const VideoCard = ({
     userData: { token },
   } = useAuth();
   const { playlistDispatch } = usePlaylist();
+  const navigate = useNavigate();
 
   const [popupMenuActive, setPopupMenuActive] = useState(false);
 
   return (
     <>
       <div className="video-card radius-5">
-        <div className="vcard-head">
+        <div onClick={() => navigate(`/videos/${_id}`)} className="vcard-head">
           <img
             className="img-responsive cursor-pointer"
             src={thumbnail}

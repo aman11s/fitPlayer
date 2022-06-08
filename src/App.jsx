@@ -11,6 +11,7 @@ import {
   Profile,
   Playlists,
   SinglePlaylist,
+  SingleVideo,
 } from "./pages";
 import Mockman from "mockman-js";
 import "./App.css";
@@ -47,6 +48,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/mock" element={<Mockman />} />
+          <Route path="/videos/:videoId" element={<SingleVideo />} />
 
           {/* Private Routes */}
           <Route element={<RequiresAuth />}>
