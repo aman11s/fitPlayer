@@ -21,6 +21,10 @@
   padding: 0.6rem;
 }
 
+button.btn.focus-btn {
+  color: var(--primary-color);
+}
+
 @media screen and (max-width: 800px) {
   .iframe-container {
     height: 50vh;

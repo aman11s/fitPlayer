@@ -11,4 +11,7 @@ export const constants = {
   // Playlist Modal
   OPEN_P_MODAL: "OPEN_P_MODAL",
   CLOSE_P_MODAL: "CLOSE_P_MODAL",
+
+  // Likes
+  TOGGLE_LIKE: "TOGGLE_LIKE",
 };

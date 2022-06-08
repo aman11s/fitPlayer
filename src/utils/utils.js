@@ -14,3 +14,6 @@ export const filterByCategory = (category, video) =>
 
 export const videoAlreadyInPlaylist = (playlist, video) =>
   playlist.videos.some(({ _id }) => _id === video._id);
+
+export const isAlreadyInLikes = (likedVideos, video) =>
+  likedVideos.some(({ _id }) => _id === video._id);

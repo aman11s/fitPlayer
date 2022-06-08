@@ -5,12 +5,24 @@ import { AiFillLike } from "react-icons/ai";
 import { RiPlayListAddFill } from "react-icons/ri";
 import { BsFillClockFill } from "react-icons/bs";
 import { ClipLoader } from "react-spinners";
+import { toggleLikeHandler } from "../../services";
+import { useAuth, useLike } from "../../contexts";
+import { isAlreadyInLikes } from "../../utils";
 import "./SingleVideo.css";
 
 export const SingleVideo = () => {
   const { videoId } = useParams();
   const [singleVideo, setSingleVideo] = useState({});
   const [pageLoader, setPageLoader] = useState(false);
+  const [disableBtn, setDisableBtn] = useState(false);
+
+  const {
+    userData: { token },
+  } = useAuth();
+  const {
+    likeState: { likes },
+    likeDispatch,
+  } = useLike();
 
   const { creator, creatorDp, description, title } = singleVideo;
 
@@ -33,6 +45,8 @@ export const SingleVideo = () => {
     })();
   }, [videoId]);
 
+  const isLiked = isAlreadyInLikes(likes, singleVideo);
+
   if (pageLoader) {
     return (
       <>
@@ -53,7 +67,7 @@ export const SingleVideo = () => {
             title="15 Minute Beginner Weight Training - Easy Exercises - HASfit Beginners Workout Routine - Strength"
             frameBorder="0"
             allowFullScreen
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope"
           ></iframe>
         </div>
 
@@ -70,7 +84,20 @@ export const SingleVideo = () => {
           </div>
 
           <div className="v-controls my-2">
-            <button className="btn container-flex-center shadow">
+            <button
+              onClick={() =>
+                toggleLikeHandler({
+                  token,
+                  singleVideo,
+                  setDisableBtn,
+                  likeDispatch,
+                })
+              }
+              className={`btn container-flex-center shadow ${
+                isLiked && "focus-btn"
+              }`}
+              disabled={disableBtn}
+            >
               <AiFillLike />
               <span className="pl-1">Like</span>
             </button>
