@@ -5,7 +5,7 @@ import { AiFillLike } from "react-icons/ai";
 import { RiPlayListAddFill } from "react-icons/ri";
 import { BsFillClockFill } from "react-icons/bs";
 import { ClipLoader } from "react-spinners";
-import { toggleLikeHandler } from "../../services";
+import { dislikeHandler, likeHandler } from "../../services";
 import { useAuth, useLike } from "../../contexts";
 import { isAlreadyInLikes } from "../../utils";
 import "./SingleVideo.css";
@@ -24,7 +24,7 @@ export const SingleVideo = () => {
     likeDispatch,
   } = useLike();
 
-  const { creator, creatorDp, description, title } = singleVideo;
+  const { _id, creator, creatorDp, description, title } = singleVideo;
 
   useEffect(() => {
     (async () => {
@@ -46,6 +46,17 @@ export const SingleVideo = () => {
   }, [videoId]);
 
   const isLiked = isAlreadyInLikes(likes, singleVideo);
+
+  const likeClickHandler = () => {
+    isLiked
+      ? dislikeHandler({ videoId: _id, token, likeDispatch, setDisableBtn })
+      : likeHandler({
+          singleVideo,
+          token,
+          likeDispatch,
+          setDisableBtn,
+        });
+  };
 
   if (pageLoader) {
     return (
@@ -85,14 +96,7 @@ export const SingleVideo = () => {
 
           <div className="v-controls my-2">
             <button
-              onClick={() =>
-                toggleLikeHandler({
-                  token,
-                  singleVideo,
-                  setDisableBtn,
-                  likeDispatch,
-                })
-              }
+              onClick={likeClickHandler}
               className={`btn container-flex-center shadow ${
                 isLiked && "focus-btn"
               }`}

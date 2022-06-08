@@ -5,4 +5,4 @@ export {
   addVideoToPlaylistHandler,
   removeVideoFromPlaylistHandler,
 } from "./playlists-services";
-export { toggleLikeHandler } from "./like-services";
+export { likeHandler, dislikeHandler } from "./like-services";

@@ -1,11 +1,11 @@
 import axios from "axios";
 import { constants } from "../utils";
 
-export const toggleLikeHandler = async ({
-  token,
+export const likeHandler = async ({
   singleVideo,
-  setDisableBtn,
+  token,
   likeDispatch,
+  setDisableBtn,
 }) => {
   try {
     setDisableBtn(true);
@@ -16,6 +16,32 @@ export const toggleLikeHandler = async ({
       data: { video: singleVideo },
     });
     if (status === 201) {
+      likeDispatch({
+        type: constants.TOGGLE_LIKE,
+        payload: { toggle_like: data.likes },
+      });
+    }
+  } catch (e) {
+    console.error(e);
+  } finally {
+    setDisableBtn(false);
+  }
+};
+
+export const dislikeHandler = async ({
+  videoId,
+  token,
+  likeDispatch,
+  setDisableBtn,
+}) => {
+  try {
+    setDisableBtn(true);
+    const { data, status } = await axios({
+      method: "DELETE",
+      url: `/api/user/likes/${videoId}`,
+      headers: { authorization: token },
+    });
+    if (status === 200) {
       likeDispatch({
         type: constants.TOGGLE_LIKE,
         payload: { toggle_like: data.likes },
