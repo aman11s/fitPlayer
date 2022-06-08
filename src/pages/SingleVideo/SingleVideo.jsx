@@ -53,7 +53,7 @@ export const SingleVideo = () => {
             title="15 Minute Beginner Weight Training - Easy Exercises - HASfit Beginners Workout Routine - Strength"
             frameBorder="0"
             allowFullScreen
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
           ></iframe>
         </div>
 
