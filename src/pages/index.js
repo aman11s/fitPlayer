@@ -6,3 +6,4 @@ export { Profile } from "./Profile/Profile";
 export { Playlists } from "./Playlists/Playlists";
 export { SinglePlaylist } from "./SinglePlaylist/SinglePlaylist";
 export { SingleVideo } from "./SingleVideo/SingleVideo";
+export { Likes } from "./Likes/Likes";

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { constants } from "../utils";
+import toast from "react-hot-toast";
 
 export const likeHandler = async ({
   singleVideo,
@@ -20,6 +21,7 @@ export const likeHandler = async ({
         type: constants.TOGGLE_LIKE,
         payload: { toggle_like: data.likes },
       });
+      toast.success("Added to liked videos");
     }
   } catch (e) {
     console.error(e);
@@ -46,6 +48,7 @@ export const dislikeHandler = async ({
         type: constants.TOGGLE_LIKE,
         payload: { toggle_like: data.likes },
       });
+      toast.success("Removed from liked videos");
     }
   } catch (e) {
     console.error(e);

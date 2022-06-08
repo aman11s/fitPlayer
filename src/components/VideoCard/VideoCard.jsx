@@ -3,8 +3,8 @@ import { shortStr } from "../../utils";
 import { PopupMenu } from "../../components";
 import { FaTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { removeVideoFromPlaylistHandler } from "../../services";
-import { useAuth, usePlaylist } from "../../contexts";
+import { dislikeHandler, removeVideoFromPlaylistHandler } from "../../services";
+import { useAuth, useLike, usePlaylist } from "../../contexts";
 import "./VideoCard.css";
 
 export const VideoCard = ({
@@ -20,6 +20,7 @@ export const VideoCard = ({
     userData: { token },
   } = useAuth();
   const { playlistDispatch } = usePlaylist();
+  const { likeDispatch } = useLike();
 
   const [popupMenuActive, setPopupMenuActive] = useState(false);
   const [disableBtn, setDisableBtn] = useState(false);
@@ -36,6 +37,14 @@ export const VideoCard = ({
           playlistDispatch,
           singlePlaylist,
           setSinglePlaylist,
+          setDisableBtn,
+        });
+
+      case "likes":
+        return dislikeHandler({
+          videoId: _id,
+          token,
+          likeDispatch,
           setDisableBtn,
         });
 

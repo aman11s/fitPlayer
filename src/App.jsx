@@ -12,6 +12,7 @@ import {
   Playlists,
   SinglePlaylist,
   SingleVideo,
+  Likes,
 } from "./pages";
 import Mockman from "mockman-js";
 import "./App.css";
@@ -55,6 +56,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/playlists" element={<Playlists />} />
             <Route path="/playlists/:playlistId" element={<SinglePlaylist />} />
+            <Route path="/likes" element={<Likes />} />
           </Route>
         </Routes>
       </div>
