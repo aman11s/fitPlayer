@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { PageHeader, VideoCard } from "../../components";
-import { useAuth } from "../../contexts";
+import { useAuth, usePlaylist } from "../../contexts";
+import { removeVideoFromPlaylistHandler } from "../../services";
 
 export const SinglePlaylist = () => {
   const { playlistId } = useParams();
   const {
     userData: { token },
   } = useAuth();
+  const { playlistDispatch } = usePlaylist();
 
   const [singlePlaylist, setSinglePlaylist] = useState({});
   const [pageLoader, setPageLoader] = useState(false);
@@ -57,14 +59,21 @@ export const SinglePlaylist = () => {
         <div className="grid-minmax-card m-4">
           {singlePlaylist?.videos &&
             singlePlaylist.videos.map((videos) => {
+              const removeHandler = () =>
+                removeVideoFromPlaylistHandler({
+                  playlistId,
+                  token,
+                  videoId: videos._id,
+                  playlistDispatch,
+                  singlePlaylist,
+                  setSinglePlaylist,
+                });
               return (
                 <VideoCard
                   key={videos._id}
                   videos={videos}
                   trashIcon={{ trashIcon: true }}
-                  playlistId={playlistId}
-                  singlePlaylist={singlePlaylist}
-                  setSinglePlaylist={setSinglePlaylist}
+                  removeHandler={removeHandler}
                 />
               );
             })}

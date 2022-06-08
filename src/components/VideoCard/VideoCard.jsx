@@ -3,22 +3,10 @@ import "./VideoCard.css";
 import { shortStr } from "../../utils";
 import { PopupMenu } from "../../components";
 import { FaTrashAlt } from "react-icons/fa";
-import { removeVideoFromPlaylistHandler } from "../../services";
-import { useAuth, usePlaylist } from "../../contexts";
 import { useNavigate } from "react-router-dom";
 
-export const VideoCard = ({
-  videos,
-  trashIcon,
-  playlistId,
-  singlePlaylist,
-  setSinglePlaylist,
-}) => {
+export const VideoCard = ({ videos, trashIcon, removeHandler }) => {
   const { _id, creator, creatorDp, thumbnail, title } = videos;
-  const {
-    userData: { token },
-  } = useAuth();
-  const { playlistDispatch } = usePlaylist();
   const navigate = useNavigate();
 
   const [popupMenuActive, setPopupMenuActive] = useState(false);
@@ -45,16 +33,7 @@ export const VideoCard = ({
           <span className="ml-2">{shortStr(creator)}</span>
           {trashIcon ? (
             <button
-              onClick={() =>
-                removeVideoFromPlaylistHandler({
-                  playlistId,
-                  token,
-                  videoId: _id,
-                  playlistDispatch,
-                  singlePlaylist,
-                  setSinglePlaylist,
-                })
-              }
+              onClick={removeHandler}
               className="trash-btn-icon cursor-pointer px-2"
             >
               <FaTrashAlt />
