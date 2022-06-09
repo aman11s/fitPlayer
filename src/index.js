@@ -10,6 +10,7 @@ import {
   PlaylistProvider,
   ThemeProvider,
   VideoProvider,
+  WatchLaterProvider,
 } from "./contexts";
 
 const rootElement = document.getElementById("root");
@@ -27,7 +28,9 @@ root.render(
             <PlaylistModalProvider>
               <PlaylistProvider>
                 <LikeProvider>
-                  <App />
+                  <WatchLaterProvider>
+                    <App />
+                  </WatchLaterProvider>
                 </LikeProvider>
               </PlaylistProvider>
             </PlaylistModalProvider>

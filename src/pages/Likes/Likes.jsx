@@ -24,7 +24,7 @@ export const Likes = () => {
                 key={videos._id}
                 videos={videos}
                 trashIcon={{ trashIcon: true }}
-                videoType={"likes"}
+                videoType="likes"
               />
             );
           })}

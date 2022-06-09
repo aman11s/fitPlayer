@@ -4,4 +4,5 @@ export {
   filterByCategory,
   videoAlreadyInPlaylist,
   isAlreadyInLikes,
+  isAlreadyInWatchLater,
 } from "./utils";

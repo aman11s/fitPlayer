@@ -6,3 +6,7 @@ export {
   removeVideoFromPlaylistHandler,
 } from "./playlists-services";
 export { likeHandler, dislikeHandler } from "./like-services";
+export {
+  addToWatchLaterHandler,
+  removeFromWatchLaterHandler,
+} from "./watch-later-services";

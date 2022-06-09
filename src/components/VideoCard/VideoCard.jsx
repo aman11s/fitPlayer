@@ -3,8 +3,12 @@ import { shortStr } from "../../utils";
 import { PopupMenu } from "../../components";
 import { FaTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { dislikeHandler, removeVideoFromPlaylistHandler } from "../../services";
-import { useAuth, useLike, usePlaylist } from "../../contexts";
+import {
+  dislikeHandler,
+  removeFromWatchLaterHandler,
+  removeVideoFromPlaylistHandler,
+} from "../../services";
+import { useAuth, useLike, usePlaylist, useWatchLater } from "../../contexts";
 import "./VideoCard.css";
 
 export const VideoCard = ({
@@ -12,6 +16,7 @@ export const VideoCard = ({
   trashIcon,
   videoType,
   singlePlaylistProps,
+  watchlaterProps,
 }) => {
   const { _id, creator, creatorDp, thumbnail, title } = videos;
   const navigate = useNavigate();
@@ -21,6 +26,7 @@ export const VideoCard = ({
   } = useAuth();
   const { playlistDispatch } = usePlaylist();
   const { likeDispatch } = useLike();
+  const { watchLaterDispatch } = useWatchLater();
 
   const [popupMenuActive, setPopupMenuActive] = useState(false);
   const [disableBtn, setDisableBtn] = useState(false);
@@ -46,6 +52,17 @@ export const VideoCard = ({
           token,
           likeDispatch,
           setDisableBtn,
+        });
+
+      case "watchlater":
+        const { watchlaterVideos, setWatchlaterVideos } = watchlaterProps;
+        return removeFromWatchLaterHandler({
+          videoId: _id,
+          token,
+          watchLaterDispatch,
+          setDisableBtn,
+          watchlaterVideos,
+          setWatchlaterVideos,
         });
 
       default:

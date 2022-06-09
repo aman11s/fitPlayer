@@ -7,3 +7,4 @@ export {
 } from "./playlist-modal-context";
 export { PlaylistProvider, usePlaylist } from "./playlist-context";
 export { LikeProvider, useLike } from "./like-context";
+export { WatchLaterProvider, useWatchLater } from "./watch-later-context";
