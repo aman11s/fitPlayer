@@ -14,4 +14,7 @@ export const constants = {
 
   // Likes
   TOGGLE_LIKE: "TOGGLE_LIKE",
+
+  // Watch Later
+  TOGGLE_WATCH_LATER: "TOGGLE_WATCH_LATER",
 };

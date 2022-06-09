@@ -17,3 +17,6 @@ export const videoAlreadyInPlaylist = (playlist, video) =>
 
 export const isAlreadyInLikes = (likedVideos, video) =>
   likedVideos.some(({ _id }) => _id === video._id);
+
+export const isAlreadyInWatchLater = (watchlater, video) =>
+  watchlater.some(({ _id }) => _id === video._id);
