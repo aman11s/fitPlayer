@@ -30,8 +30,12 @@ export const removeFromWatchLaterHandler = async ({
   videoId,
   token,
   watchLaterDispatch,
+  setDisableBtn,
+  watchlaterVideos,
+  setWatchlaterVideos,
 }) => {
   try {
+    setDisableBtn(true);
     const { data, status } = await axios({
       method: "DELETE",
       url: `/api/user/watchlater/${videoId}`,
@@ -42,9 +46,15 @@ export const removeFromWatchLaterHandler = async ({
         type: constants.TOGGLE_WATCH_LATER,
         payload: { toggle_watch_later: data.watchlater },
       });
+      setWatchlaterVideos &&
+        setWatchlaterVideos(
+          watchlaterVideos.filter(({ _id }) => _id !== videoId)
+        );
       toast.success("Removed from watch later");
     }
   } catch (e) {
     console.error(e);
+  } finally {
+    setDisableBtn(false);
   }
 };
