@@ -9,7 +9,7 @@ export const addToWatchLaterHandler = async ({
   setDisableBtn,
 }) => {
   try {
-    setDisableBtn(true);
+    setDisableBtn && setDisableBtn(true);
     const { data, status } = await axios({
       method: "POST",
       url: "/api/user/watchlater",
@@ -26,7 +26,7 @@ export const addToWatchLaterHandler = async ({
   } catch (e) {
     console.error(e);
   } finally {
-    setDisableBtn(false);
+    setDisableBtn && setDisableBtn(false);
   }
 };
 
@@ -39,7 +39,7 @@ export const removeFromWatchLaterHandler = async ({
   setWatchlaterVideos,
 }) => {
   try {
-    setDisableBtn(true);
+    setDisableBtn && setDisableBtn(true);
     const { data, status } = await axios({
       method: "DELETE",
       url: `/api/user/watchlater/${videoId}`,
@@ -59,6 +59,6 @@ export const removeFromWatchLaterHandler = async ({
   } catch (e) {
     console.error(e);
   } finally {
-    setDisableBtn(false);
+    setDisableBtn && setDisableBtn(false);
   }
 };
