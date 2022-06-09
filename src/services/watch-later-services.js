@@ -6,8 +6,10 @@ export const addToWatchLaterHandler = async ({
   token,
   video,
   watchLaterDispatch,
+  setDisableBtn,
 }) => {
   try {
+    setDisableBtn(true);
     const { data, status } = await axios({
       method: "POST",
       url: "/api/user/watchlater",
@@ -23,6 +25,8 @@ export const addToWatchLaterHandler = async ({
     }
   } catch (e) {
     console.error(e);
+  } finally {
+    setDisableBtn(false);
   }
 };
 

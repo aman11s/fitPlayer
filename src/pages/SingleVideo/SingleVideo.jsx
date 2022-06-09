@@ -1,13 +1,18 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AiFillLike } from "react-icons/ai";
 import { RiPlayListAddFill } from "react-icons/ri";
 import { BsFillClockFill } from "react-icons/bs";
 import { ClipLoader } from "react-spinners";
-import { dislikeHandler, likeHandler } from "../../services";
-import { useAuth, useLike } from "../../contexts";
-import { isAlreadyInLikes } from "../../utils";
+import {
+  addToWatchLaterHandler,
+  dislikeHandler,
+  likeHandler,
+  removeFromWatchLaterHandler,
+} from "../../services";
+import { useAuth, useLike, useWatchLater } from "../../contexts";
+import { isAlreadyInLikes, isAlreadyInWatchLater } from "../../utils";
 import "./SingleVideo.css";
 
 export const SingleVideo = () => {
@@ -23,6 +28,11 @@ export const SingleVideo = () => {
     likeState: { likes },
     likeDispatch,
   } = useLike();
+  const {
+    watchLaterState: { watchLater },
+    watchLaterDispatch,
+  } = useWatchLater();
+  const navigate = useNavigate();
 
   const { _id, creator, creatorDp, description, title } = singleVideo;
 
@@ -46,16 +56,41 @@ export const SingleVideo = () => {
   }, [videoId]);
 
   const isLiked = isAlreadyInLikes(likes, singleVideo);
+  const inWatchLater = isAlreadyInWatchLater(watchLater, singleVideo);
 
   const likeClickHandler = () => {
-    isLiked
-      ? dislikeHandler({ videoId: _id, token, likeDispatch, setDisableBtn })
-      : likeHandler({
-          singleVideo,
-          token,
-          likeDispatch,
-          setDisableBtn,
-        });
+    if (token) {
+      isLiked
+        ? dislikeHandler({ videoId: _id, token, likeDispatch, setDisableBtn })
+        : likeHandler({
+            singleVideo,
+            token,
+            likeDispatch,
+            setDisableBtn,
+          });
+    } else {
+      navigate("/login", { replace: true });
+    }
+  };
+
+  const watchlaterHandler = () => {
+    if (token) {
+      inWatchLater
+        ? removeFromWatchLaterHandler({
+            videoId: _id,
+            token,
+            watchLaterDispatch,
+            setDisableBtn,
+          })
+        : addToWatchLaterHandler({
+            token,
+            video: singleVideo,
+            watchLaterDispatch,
+            setDisableBtn,
+          });
+    } else {
+      navigate("/login", { replace: true });
+    }
   };
 
   if (pageLoader) {
@@ -111,7 +146,13 @@ export const SingleVideo = () => {
               <span className="pl-1">Playlist</span>
             </button>
 
-            <button className="btn container-flex-center shadow">
+            <button
+              onClick={watchlaterHandler}
+              className={`btn container-flex-center shadow ${
+                inWatchLater && "focus-btn"
+              }`}
+              disabled={disableBtn}
+            >
               <BsFillClockFill />
               <span className="pl-1">Watch Later</span>
             </button>
