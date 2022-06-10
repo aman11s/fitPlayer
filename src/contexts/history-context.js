@@ -1,5 +1,4 @@
-import { createContext, useContext } from "react";
-import { useReducer } from "react/cjs/react.production.min";
+import { createContext, useContext, useReducer } from "react";
 import { historyReducer } from "../reducers";
 
 const HistoryContext = createContext(null);
