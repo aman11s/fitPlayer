@@ -8,3 +8,4 @@ export {
 export { PlaylistProvider, usePlaylist } from "./playlist-context";
 export { LikeProvider, useLike } from "./like-context";
 export { WatchLaterProvider, useWatchLater } from "./watch-later-context";
+export { HistoryProvider, useHistory } from "./history-context";
