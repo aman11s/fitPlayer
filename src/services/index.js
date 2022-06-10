@@ -10,4 +10,4 @@ export {
   addToWatchLaterHandler,
   removeFromWatchLaterHandler,
 } from "./watch-later-services";
-export { addToHistory } from "./history-services";
+export { addToHistory, removeFromHistory } from "./history-services";

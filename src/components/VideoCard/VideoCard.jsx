@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {
   addToHistory,
   dislikeHandler,
+  removeFromHistory,
   removeFromWatchLaterHandler,
   removeVideoFromPlaylistHandler,
 } from "../../services";
@@ -24,6 +25,7 @@ export const VideoCard = ({
   videoType,
   singlePlaylistProps,
   watchlaterProps,
+  historyProps,
 }) => {
   const { _id, creator, creatorDp, thumbnail, title } = videos;
   const navigate = useNavigate();
@@ -73,6 +75,18 @@ export const VideoCard = ({
           setWatchlaterVideos,
         });
 
+      case "history":
+        const { historyVideos, setHistoryVideos } = historyProps;
+
+        return removeFromHistory({
+          videoId: _id,
+          token,
+          historyDispatch,
+          setDisableBtn,
+          historyVideos,
+          setHistoryVideos,
+        });
+
       default:
         break;
     }
@@ -80,7 +94,9 @@ export const VideoCard = ({
 
   const videoClickHandler = () => {
     navigate(`/videos/${_id}`);
-    addToHistory({ token, videos, historyDispatch });
+    if (token) {
+      addToHistory({ token, videos, historyDispatch });
+    }
   };
 
   return (
