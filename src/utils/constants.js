@@ -17,4 +17,8 @@ export const constants = {
 
   // Watch Later
   TOGGLE_WATCH_LATER: "TOGGLE_WATCH_LATER",
+
+  // History
+  ADD_TO_HISTORY: "ADD_TO_HISTORY",
+  DELETE_FROM_HISTORY: "DELETE_FROM_HISTORY",
 };

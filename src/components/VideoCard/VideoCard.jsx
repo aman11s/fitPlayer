@@ -4,11 +4,19 @@ import { PopupMenu } from "../../components";
 import { FaTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import {
+  addToHistory,
   dislikeHandler,
+  removeFromHistory,
   removeFromWatchLaterHandler,
   removeVideoFromPlaylistHandler,
 } from "../../services";
-import { useAuth, useLike, usePlaylist, useWatchLater } from "../../contexts";
+import {
+  useAuth,
+  useHistory,
+  useLike,
+  usePlaylist,
+  useWatchLater,
+} from "../../contexts";
 import "./VideoCard.css";
 
 export const VideoCard = ({
@@ -17,6 +25,7 @@ export const VideoCard = ({
   videoType,
   singlePlaylistProps,
   watchlaterProps,
+  historyProps,
 }) => {
   const { _id, creator, creatorDp, thumbnail, title } = videos;
   const navigate = useNavigate();
@@ -27,6 +36,7 @@ export const VideoCard = ({
   const { playlistDispatch } = usePlaylist();
   const { likeDispatch } = useLike();
   const { watchLaterDispatch } = useWatchLater();
+  const { historyDispatch } = useHistory();
 
   const [popupMenuActive, setPopupMenuActive] = useState(false);
   const [disableBtn, setDisableBtn] = useState(false);
@@ -65,15 +75,34 @@ export const VideoCard = ({
           setWatchlaterVideos,
         });
 
+      case "history":
+        const { historyVideos, setHistoryVideos } = historyProps;
+
+        return removeFromHistory({
+          videoId: _id,
+          token,
+          historyDispatch,
+          setDisableBtn,
+          historyVideos,
+          setHistoryVideos,
+        });
+
       default:
         break;
+    }
+  };
+
+  const videoClickHandler = () => {
+    navigate(`/videos/${_id}`);
+    if (token) {
+      addToHistory({ token, videos, historyDispatch });
     }
   };
 
   return (
     <>
       <div className="video-card radius-5">
-        <div onClick={() => navigate(`/videos/${_id}`)} className="vcard-head">
+        <div onClick={videoClickHandler} className="vcard-head">
           <img
             className="img-responsive cursor-pointer"
             src={thumbnail}

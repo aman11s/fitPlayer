@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import {
   AuthProvider,
+  HistoryProvider,
   LikeProvider,
   PlaylistModalProvider,
   PlaylistProvider,
@@ -29,7 +30,9 @@ root.render(
               <PlaylistProvider>
                 <LikeProvider>
                   <WatchLaterProvider>
-                    <App />
+                    <HistoryProvider>
+                      <App />
+                    </HistoryProvider>
                   </WatchLaterProvider>
                 </LikeProvider>
               </PlaylistProvider>
