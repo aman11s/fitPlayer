@@ -11,8 +11,17 @@ import {
   likeHandler,
   removeFromWatchLaterHandler,
 } from "../../services";
-import { useAuth, useLike, useWatchLater } from "../../contexts";
-import { isAlreadyInLikes, isAlreadyInWatchLater } from "../../utils";
+import {
+  useAuth,
+  useLike,
+  usePlaylistModal,
+  useWatchLater,
+} from "../../contexts";
+import {
+  constants,
+  isAlreadyInLikes,
+  isAlreadyInWatchLater,
+} from "../../utils";
 import "./SingleVideo.css";
 
 export const SingleVideo = () => {
@@ -32,6 +41,7 @@ export const SingleVideo = () => {
     watchLaterState: { watchLater },
     watchLaterDispatch,
   } = useWatchLater();
+  const { playlistModalDispatch } = usePlaylistModal();
   const navigate = useNavigate();
 
   const { _id, creator, creatorDp, description, title } = singleVideo;
@@ -93,6 +103,17 @@ export const SingleVideo = () => {
     }
   };
 
+  const playlistHandler = () => {
+    if (token) {
+      playlistModalDispatch({
+        type: constants.OPEN_P_MODAL,
+        payload: { open_modal: true, get_video: singleVideo },
+      });
+    } else {
+      navigate("/login", { replace: true });
+    }
+  };
+
   if (pageLoader) {
     return (
       <>
@@ -141,7 +162,10 @@ export const SingleVideo = () => {
               <span className="pl-1">Like</span>
             </button>
 
-            <button className="btn container-flex-center shadow">
+            <button
+              onClick={playlistHandler}
+              className="btn container-flex-center shadow"
+            >
               <RiPlayListAddFill />
               <span className="pl-1">Playlist</span>
             </button>
