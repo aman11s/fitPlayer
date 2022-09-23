@@ -9,8 +9,8 @@ export const DropDownList = ({ setActiveDropDown }) => {
   const { setUserData } = useAuth();
 
   const profileOnClickHandler = () => {
-    navigate("/profile");
     setActiveDropDown(false);
+    navigate("/profile");
   };
 
   const logoutOnClickHandler = () => {

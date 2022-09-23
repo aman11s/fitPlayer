@@ -36,7 +36,10 @@ export const VideoCard = ({
   const { playlistDispatch } = usePlaylist();
   const { likeDispatch } = useLike();
   const { watchLaterDispatch } = useWatchLater();
-  const { historyDispatch } = useHistory();
+  const {
+    historyDispatch,
+    historyState: { history },
+  } = useHistory();
 
   const [popupMenuActive, setPopupMenuActive] = useState(false);
   const [disableBtn, setDisableBtn] = useState(false);
@@ -93,10 +96,11 @@ export const VideoCard = ({
   };
 
   const videoClickHandler = () => {
-    navigate(`/videos/${_id}`);
-    if (token) {
+    const isALreadyInHistory = history.some((video) => video._id === _id);
+    if (token && !isALreadyInHistory) {
       addToHistory({ token, videos, historyDispatch });
     }
+    navigate(`/videos/${_id}`);
   };
 
   return (
