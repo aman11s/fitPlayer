@@ -129,7 +129,7 @@ export const SingleVideo = () => {
       <main className="p-2 main-container main-min-height">
         <div className="iframe-container">
           <iframe
-            src={`https://www.youtube.com/embed/${singleVideo._id}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3`}
+            src={`https://www.youtube-nocookie.com/embed/${singleVideo._id}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3`}
             className="player radius-5"
             title="15 Minute Beginner Weight Training - Easy Exercises - HASfit Beginners Workout Routine - Strength"
             frameBorder="0"
